@@ -29,12 +29,12 @@ void StartTragaPerras(){
     int  flag=0;
      while (flag==0)
      {
-          sleep(1000);
+          Sleep(1000);
           printf("|| %i || %i || %i ||\n",rand()%10,rand()%10,rand()%10);
           scanf("%d", &flag);
           if(flag==1){
                "acabo";
           }
      }
-     
 }
+     
