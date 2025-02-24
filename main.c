@@ -9,16 +9,20 @@ int main(int argc, char const *argv[]){
             case '1':
                 do{
                     opcion2 = TragaPerras();
-                    swtich(opcion2){
-                        case 1:
-                        printf("Jugando\n");
-                        StartTragaPerras();
-                        break;
-                        case 2:
+                    switch(opcion2){
+                        case '1':
+                            printf("Jugando\n");
+                            fflush(stdout);
+                            StartTragaPerras();
+                            break;
+                        case '0':
+                            printf("Salir del juego\n");
+                            fflush(stdout);
                             flag = 1;
                             break;
                         default:
                             printf("Opcion no valida\n");
+                            fflush(stdout);
                             break;
                     }
                 }while(opcion2!='0');
@@ -27,7 +31,7 @@ int main(int argc, char const *argv[]){
             case '2':
                 do{
                     opcion2 = menu2();
-                    swtich(opcion2){
+                    switch(opcion2){
                         
                     }
                 }while(opcion2!='0');
@@ -36,7 +40,16 @@ int main(int argc, char const *argv[]){
             case '3':
                 do{
                     opcion2 = menu2();
-                    swtich(opcion2){
+                    switch(opcion2){
+                        
+                    }
+                }while(opcion2!='0');
+                break;
+                
+            case '4':
+                do{
+                    opcion2 = menu2();
+                    switch(opcion2){
                         
                     }
                 }while(opcion2!='0');
@@ -51,7 +64,9 @@ int main(int argc, char const *argv[]){
                 break;
         }
     } while (opcion != '0');
-    //Yahoooooooo viva el casino (Prueba 1 Commit con VSCODE)
-    TragaPerras();
+        printf("Opcion no valida\n");
+        fflush(stdout);
+        break;
+    
     return 0;
 }
