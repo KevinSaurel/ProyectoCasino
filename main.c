@@ -10,8 +10,16 @@ int main(int argc, char const *argv[]){
                 do{
                     opcion2 = TragaPerras();
                     swtich(opcion2){
-
-                        
+                        case 1:
+                        printf("Jugando\n");
+                        StartTragaPerras();
+                        break;
+                        case 2:
+                            flag = 1;
+                            break;
+                        default:
+                            printf("Opcion no valida\n");
+                            break;
                     }
                 }while(opcion2!='0');
                 break;

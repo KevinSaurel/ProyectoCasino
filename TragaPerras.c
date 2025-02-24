@@ -10,15 +10,15 @@ void TragaPerras(){
      
            printf("Tragaperras\n");
                printf("1. Jugar\n");
-               printf("2. Salir\n");
+               printf("0. Salir\n");
                int opcion;
                scanf("%d", &opcion);
                switch(opcion){
-                    case 1:
+                    case '1':
                          printf("Jugando\n");
                          StartTragaPerras();
                          break;
-                    case 2:
+                    case '0':
                          flag = 1;
                          break;
                     default:
