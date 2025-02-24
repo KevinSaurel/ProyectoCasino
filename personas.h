@@ -8,3 +8,4 @@ typedef struct
 }Cliente;
 
 void pedirPrestamo(Cliente *c);
+void devolverPrestamo(Cliente *c);

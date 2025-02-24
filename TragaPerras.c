@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include "menus.h"
+#include "personas.h"
 #include "juegos.h"
-#include <windows.h> // para el sleep
 #include <stdlib.h>// para el rands
 #include <time.h> // para el time
 #include <conio.h>   // For kbhit() //waits for a key to be pressed
