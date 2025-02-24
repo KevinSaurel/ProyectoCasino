@@ -1,5 +1,7 @@
 #include <stdio.h>
-
+#include "juegos.h"
+#include <windows.h> // para el sleep
+#include <stdlib.h>// para el rands
 // A TRAGGAAAAARRRRRRRRRRRRRR 
 void TragaPerras(){
      int flag = 0;
