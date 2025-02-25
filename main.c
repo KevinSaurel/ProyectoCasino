@@ -11,7 +11,7 @@ int main(int argc, char const *argv[]){
 
     char opcion,opcion2,opcion3;
 
-    do {//este NO es un do while, solo queremos que se runee una vez
+    //este NO es un do while, solo queremos que se runee una vez
         printf("Bienvenido al Casino\n");
         fflush(stdout);
         //despues de cargar los datos del cliente se mostrara el menu principal
@@ -69,7 +69,7 @@ int main(int argc, char const *argv[]){
                 printf("Opción no válida\n");
                 break;
         }
-    };
+    
     do{
         opcion2 = menuPrincipal();
         switch(opcion2){
