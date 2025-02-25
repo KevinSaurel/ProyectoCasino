@@ -1,14 +1,28 @@
 #include <stdio.h>
 #include "juegos.h"
+#include "cliente.h"
+#include "menu.h"
 int main(int argc, char const *argv[]){
-    char opcion;
+    cliente c;//inicializamos el cliente
+    //cuando tengamos ficheros se cargaran la informacion al selecionar la opcion 2 en el menu sesion
+
+
+
+
+    char opcion,opcion2,opcion3;
 
     do {
-        opcion = menuPrincipal();
+
+        //opcion = menuPrincipal();//este menu seleciona el juego que se quiere jugar
+        //primero se seleciona el jugador
+        opcion=menuSesion();
+
 		switch (opcion) {
             case '1':
                 do{
-                    opcion2 = TragaPerras();
+
+
+                    /*opcion2 = TragaPerras();
                     switch(opcion2){
                         case '1':
                             printf("Jugando\n");
@@ -23,7 +37,7 @@ int main(int argc, char const *argv[]){
                         default:
                             printf("Opcion no valida\n");
                             fflush(stdout);
-                            break;
+                            break;*/
                     }
                 }while(opcion2!='0');
                 break;
