@@ -5,6 +5,7 @@
 #include <stdlib.h>// para el rands
 #include <time.h> // para el time
 #include <conio.h>   // For kbhit() //waits for a key to be pressed
+#include <windows.h> // For Sleep() //sleep
 // A TRAGGAAAAARRRRRRRRRRRRRR 
 void TragaPerras(){//el menu se crea en el main, y las partes de arriba en la clase menu
      int flag = 0;
