@@ -1,6 +1,6 @@
-#ifndef JUEGOS_H
-#define JUEGOS_H
+#ifndef JUEGOS_H_
+#define JUEGOS_H_
 void TragaPerras();
 void StartTragaPerras();
 
-#endif
+#endif // JUEGOS_H_ //
