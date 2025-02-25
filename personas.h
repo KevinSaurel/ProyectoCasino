@@ -19,7 +19,7 @@ void cargarDatosCliente(Cliente *c);
 void mostrarBalanceBanco(Cliente c);//simplemente mostrar los valores de dinero y deuda
 //tambien podemos poner que aparezca el dinero siempre mientras se juega
 void pedirPrestamo(Cliente *c);
-void devolverPrestamo(Cliente *c);
+void devolverDeuda(Cliente *c);
 void borrarDatosCliente(Cliente *c);
 
 

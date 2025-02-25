@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "juegos.h"
+#include "tragaperras.h"
 #include "personas.h"
 #include "menus.h"
 int main(int argc, char const *argv[]){
@@ -107,7 +107,7 @@ int main(int argc, char const *argv[]){
                 pedirPrestamo(&c);
                 break;
             case '4':
-                devolverPrestamo(&c);
+                devolverDeuda(&c);
                 break;
             case '0':
                 printf("Hasta la proxima\n");
