@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include "juegos.h"
-#include "cliente.h"
-#include "menu.h"
+#include "personas.h"
+#include "menus.h"
 int main(int argc, char const *argv[]){
-    cliente c;//inicializamos el cliente
+    Cliente c;//inicializamos el cliente
     //cuando tengamos ficheros se cargaran la informacion al selecionar la opcion 2 en el menu sesion
     
 
@@ -107,7 +107,7 @@ int main(int argc, char const *argv[]){
                 pedirPrestamo(&c);
                 break;
             case '4':
-                devolverDeuda(&c);
+                devolverPrestamo(&c);
                 break;
             case '0':
                 printf("Hasta la proxima\n");
