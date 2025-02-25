@@ -8,7 +8,6 @@ char menuJuegos(){
 	printf("1. Maquina Tragaperras\n");
 	printf("2. Carrera de Caballos\n");
 	printf("3. Blackjack\n");
-    printf("4. Recursos del casino\n");
 	printf("0. Salir\n");
 	printf("Elige una opci�n: ");
 	fflush(stdout);
@@ -32,7 +31,7 @@ char menuPrincipal(){
 	scanf("%c",&opcion);
 	return opcion;
 }
-char menuSesion(){
+char menuSesion(){//es el primero que se muestra
 	char opcion;
 	
 	printf("1. Nuevo Jugador\n");
@@ -51,7 +50,7 @@ char menuTragaperras(){
 	printf("1. Jugar\n");
 	//printf("2. Guardar partida\n"); //se guardara cada vez que le demos a salir
 	//se implemnetara con los ficheros
-	printf("0. Volver al menu de juegos\n");
+	printf("0. Salir de la tragaperras\n");
 	printf("Elige una opcion: ");
 	fflush(stdout);
 	fflush(stdin);

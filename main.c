@@ -11,7 +11,10 @@ int main(int argc, char const *argv[]){
 
     char opcion,opcion2,opcion3;
 
-    do {
+    do {//este NO es un do while, solo queremos que se runee una vez
+        printf("Bienvenido al Casino\n");
+        fflush(stdout);
+        //despues de cargar los datos del cliente se mostrara el menu principal
 
         //opcion = menuPrincipal();//este menu seleciona el juego que se quiere jugar
         //primero se seleciona el jugador
@@ -29,6 +32,8 @@ int main(int argc, char const *argv[]){
                     printf("Bienvenido %s\n",c.nombre);
                     fflush(stdout);
                 }
+                
+                break;
                 /*do{
 
 
@@ -51,32 +56,9 @@ int main(int argc, char const *argv[]){
                     }
                 }while(opcion2!='0');
                 break;*/
-                break;
             case '2':
-                do{
-                    opcion2 = menu2();
-                    switch(opcion2){
-                        
-                    }
-                }while(opcion2!='0');
-                break;
+                cargarDatosCliente(&c);
 
-            case '3':
-                do{
-                    opcion2 = menu2();
-                    switch(opcion2){
-                        
-                    }
-                }while(opcion2!='0');
-                break;
-                
-            case '4':
-                do{
-                    opcion2 = menu2();
-                    switch(opcion2){
-                        
-                    }
-                }while(opcion2!='0');
                 break;
 
             case '0':
@@ -87,10 +69,60 @@ int main(int argc, char const *argv[]){
                 printf("Opción no válida\n");
                 break;
         }
-    } while (opcion != '0');
-        printf("Opcion no valida\n");
-        fflush(stdout);
-        break;
+    };
+    do{
+        opcion2 = menuPrincipal();
+        switch(opcion2){
+            case '1':
+                do{
+                    opcion3 = menuJuegos();
+                    switch(opcion3){
+                        case '1'://este es el tragaperras
+                        //aqui se pone el menu de tragaperras
+
+
+                            StartTragaPerras();
+                            break;
+                        case '2'://este es la carrera de caballos
+                            
+                            break;
+                        case '3'://este es el blackjack
+                            
+                            break;
+                        case '0':
+                            printf("Volver al menu principal\n");
+                            fflush(stdout);
+                            break;
+                        default:
+                            printf("Opcion no valida\n");
+                            fflush(stdout);
+                            break;
+                    }
+                }while(opcion3!='0');
+                break;
+            case '2':
+                mostrarBalanceBanco(c);
+                break;
+            case '3':
+                pedirPrestamo(&c);
+                break;
+            case '4':
+                devolverDeuda(&c);
+                break;
+            case '0':
+                printf("Hasta la proxima\n");
+                fflush(stdout);
+                //guardar los cambios en el fichero
+
+                borrarDatosCliente(&c);//borramos los datos del cliente que sale
+                break;
+            default:
+                printf("Opcion no valida\n");
+                fflush(stdout);
+                
+        }
+    }while(opcion2!='0');
+    
     
     return 0;
 }
