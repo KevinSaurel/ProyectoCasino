@@ -2,7 +2,8 @@
 #define MENUS_H_
 
 char menuPrincipal();
-char menuSesion();
 char menuJuegos();
+char menuSesion();
+char menuTragaperras();
 
 #endif /* MENUS_H_ */

@@ -5,7 +5,7 @@
 int main(int argc, char const *argv[]){
     cliente c;//inicializamos el cliente
     //cuando tengamos ficheros se cargaran la informacion al selecionar la opcion 2 en el menu sesion
-
+    
 
 
 
@@ -19,10 +19,20 @@ int main(int argc, char const *argv[]){
 
 		switch (opcion) {
             case '1':
-                do{
+                pedirDatosCliente(&c);
+                if(comprobarEdad(c)==0){
+                    printf("El acceso a menores de edad no esta permitido\n");
+                    fflush(stdout);
+                    borrarDatosCliente(&c);
+                    break;
+                }else{
+                    printf("Bienvenido %s\n",c.nombre);
+                    fflush(stdout);
+                }
+                /*do{
 
 
-                    /*opcion2 = TragaPerras();
+                    opcion2 = TragaPerras();
                     switch(opcion2){
                         case '1':
                             printf("Jugando\n");
@@ -37,11 +47,11 @@ int main(int argc, char const *argv[]){
                         default:
                             printf("Opcion no valida\n");
                             fflush(stdout);
-                            break;*/
+                            break;
                     }
                 }while(opcion2!='0');
+                break;*/
                 break;
-                
             case '2':
                 do{
                     opcion2 = menu2();
