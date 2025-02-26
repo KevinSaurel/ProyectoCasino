@@ -9,7 +9,7 @@
 // A TRAGGAAAAARRRRRRRRRRRRRR 
 void TragaPerras(){//el menu se crea en el main, y las partes de arriba en la clase menu
      int flag = 0;
-
+     
 
 
      printf("\n====================================================================================\n");
@@ -53,12 +53,12 @@ void StartTragaPerras(){
           
     srand(time(NULL));
      while (flag==0){
-          
+          const char *fruits[] = {"🍒", "🍋", "🍊", "🍉", "🍇", "🍓"};
           Sleep(500);
-          int num1 = rand()%10;
-          int num2 = rand()%10;
-          int num3 = rand()%10;
-          printf("                           || %i || %i || %i ||\n",num1,num2,num3);
+          int num1 = rand()%6;
+          int num2 = rand()%6;
+          int num3 = rand()%6;
+          printf("                           || %s || %s || %s ||\n",fruits[num1], fruits[num2], fruits[num3]);
           //scanf("%i", &flag);
           if (_kbhit()) {  
                printf("\n\n                          JUEGO DETENIDO!      ");
@@ -72,12 +72,12 @@ void StartTragaPerras(){
                else if (num1==num2 || num1==num3 || num2==num3){//partial win  solo hay dos que coinciden 
                     printf("\n====================================================================================\n");
                    printf("                         GANASTE PREMIO MEDIO!                                     \n");
-                   printf("                     Números obtenidos: %i, %i, %i                                  \n", num1, num2, num3);
+                   printf("                     Números obtenidos:  %s || %s || %s                                 \n", fruits[num1], fruits[num2], fruits[num3]);
                    printf("====================================================================================\n");
               }else{
                printf("\n====================================================================================\n");
                printf("                              PERDISTE!                                            \n");
-               printf("                     Numeros obtenidos: %i, %i, %i                                  \n", num1, num2, num3);
+               printf("                     Numeros obtenidos:  %s || %s || %s                                       \n", fruits[num1], fruits[num2], fruits[num3]);
                printf("====================================================================================\n");
           }
           printf("\n                         DESEAS SEGUIR JUGANDO?                                 \n");
