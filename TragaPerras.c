@@ -9,6 +9,9 @@
 // A TRAGGAAAAARRRRRRRRRRRRRR 
 void TragaPerras(){//el menu se crea en el main, y las partes de arriba en la clase menu
      int flag = 0;
+
+
+
      printf("\n====================================================================================\n");
      printf("                              BIENVENIDO AL TRAGAPERRAS                              \n");
      printf("====================================================================================\n");
@@ -19,7 +22,7 @@ void TragaPerras(){//el menu se crea en el main, y las partes de arriba en la cl
 
      printf("                                 [1] Jugar                                           \n");
      printf("                                 [0] Salir                                           \n\n");
-     printf("                              Seleccione una opción: ");
+     printf("                              Seleccione una opcion: ");
                int opcion;
                scanf("%d", &opcion);
                switch(opcion){
@@ -74,13 +77,13 @@ void StartTragaPerras(){
               }else{
                printf("\n====================================================================================\n");
                printf("                              PERDISTE!                                            \n");
-               printf("                     Números obtenidos: %i, %i, %i                                  \n", num1, num2, num3);
+               printf("                     Numeros obtenidos: %i, %i, %i                                  \n", num1, num2, num3);
                printf("====================================================================================\n");
           }
           printf("\n                         DESEAS SEGUIR JUGANDO?                                 \n");
           printf("                                [1] Si                                             \n");
           printf("                                [0] No                                             \n\n");
-          printf("                             Seleccione una opción: ");
+          printf("                             Seleccione una opcion: ");
           
           int opcion;
           scanf("%d", &opcion);
