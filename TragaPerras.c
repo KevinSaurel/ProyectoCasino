@@ -7,7 +7,7 @@
 #include <conio.h>   // For kbhit() //waits for a key to be pressed
 #include <windows.h> // For Sleep() //sleep
 // A TRAGGAAAAARRRRRRRRRRRRRR 
-void TragaPerras(){//el menu se crea en el main, y las partes de arriba en la clase menu
+void TragaPerras(Cliente c){//el menu se crea en el main, y las partes de arriba en la clase menu
      int flag = 0;
      
 
@@ -15,9 +15,9 @@ void TragaPerras(){//el menu se crea en el main, y las partes de arriba en la cl
      printf("\n====================================================================================\n");
      printf("                              BIENVENIDO AL TRAGAPERRAS                              \n");
      printf("====================================================================================\n");
-     printf("                                       REGLAS                                        \n");
-     printf("                              - Tres numeros son x10                                 \n");
-     printf("                              - Dos numeros son x5                                   \n");
+     printf("                                  REGLAS                 COSTE                         \n");
+     printf("                         - Tres numeros son x10        -Cada tirada son 10€             \n");//podemos poner distintos tipos de apuestas, solo preguntamelo si lo quieres
+     printf("                         - Dos numeros son x5          -Saldo:%.2f                           \n",c.dinero);
      printf("====================================================================================\n\n");
 
      printf("                                 [1] Jugar                                           \n");
@@ -29,7 +29,7 @@ void TragaPerras(){//el menu se crea en el main, y las partes de arriba en la cl
                     case 1:
                     printf("\n                             EMPEZANDO JUEGO                            \n");
                     printf("====================================================================================\n");
-                    StartTragaPerras();
+                    StartTragaPerras(&c);
                     break;
                     case 0:
                     flag = 1;
@@ -46,8 +46,10 @@ void TragaPerras(){//el menu se crea en el main, y las partes de arriba en la cl
      
 
 }
-void StartTragaPerras(){
+void StartTragaPerras(Cliente *c){
     int  flag=0;
+    int apuesta = 10;//habria que escribir un scan para pedir la apuesta, pero habria que poner comprobaciones de que no apueste en negativo
+    //primero lo probare con una apuesta fija
     printf("\n                           TRAGAPERRAS EN MARCHA...                               \n");
           printf("                      Presiona cualquier tecla para detener                       \n\n");
           
@@ -64,20 +66,25 @@ void StartTragaPerras(){
                printf("\n\n                          JUEGO DETENIDO!      ");
                int stp = getch(); 
                if(num1==num2==num3){//win grande 
+                    c->dinero = c->dinero + apuesta*10;//hay que modificar esto cuando ponga mas formas de apostar
                     printf("\n====================================================================================\n");
                     printf("                          GANASTE EL PREMIO GRANDE !!!                          \n");
-                    printf("                            TU APUESTA x10!                                        \n");
+                    printf("                             Apuestax10!                                        \n");
+                    printf("                                                       Saldo:%.2f              \n", c->dinero);
                     printf("====================================================================================\n");
                } 
                else if (num1==num2 || num1==num3 || num2==num3){//partial win  solo hay dos que coinciden 
+                    c->dinero = c->dinero + apuesta*5;
                     printf("\n====================================================================================\n");
                    printf("                         GANASTE PREMIO MEDIO!                                     \n");
                    printf("                     Números obtenidos:  %s || %s || %s                                 \n", fruits[num1], fruits[num2], fruits[num3]);
+                   printf("                                                       Saldo:%.2f              \n", c->dinero);
                    printf("====================================================================================\n");
               }else{
                printf("\n====================================================================================\n");
                printf("                              PERDISTE!                                            \n");
                printf("                     Numeros obtenidos:  %s || %s || %s                                       \n", fruits[num1], fruits[num2], fruits[num3]);
+               printf("                                                       Saldo:%.2f              \n", c->dinero);
                printf("====================================================================================\n");
           }
           printf("\n                         DESEAS SEGUIR JUGANDO?                                 \n");
