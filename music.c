@@ -12,7 +12,7 @@ int music() {
     int count=10;
     for (size_t i = 0; i < count; i++)
     {
-        sleep(1000);
+        Sleep(1000);
         /* code */
         PlaySound("CasinoMusic.wav", NULL, SND_FILENAME | SND_ASYNC);
 
