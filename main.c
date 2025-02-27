@@ -6,7 +6,7 @@
 int main(int argc, char const *argv[]){
     Cliente c;//inicializamos el cliente
     //cuando tengamos ficheros se cargaran la informacion al selecionar la opcion 2 en el menu sesion
-    
+    music();
 
 
 
