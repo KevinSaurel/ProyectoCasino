@@ -81,6 +81,7 @@ void StartTragaPerras(Cliente *c){
                    printf("                                                       Saldo:%.2f              \n", c->dinero);
                    printf("====================================================================================\n");
               }else{
+               c->dinero = c->dinero - apuesta;
                printf("\n====================================================================================\n");
                printf("                              PERDISTE!                                            \n");
                printf("                     Numeros obtenidos:  %s || %s || %s                                       \n", fruits[num1], fruits[num2], fruits[num3]);
