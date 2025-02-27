@@ -21,17 +21,23 @@ int main(int argc, char const *argv[]){
         opcion=menuSesion();
 
 		switch (opcion) {
-            case '1':
+            case '1':    
                 pedirDatosCliente(&c);
                 if(comprobarEdad(c)==0){
                     printf("El acceso a menores de edad no esta permitido\n");
                     fflush(stdout);
                     borrarDatosCliente(&c);
-                    break;
+                    break;//salimos del switch
+
                 }else{
                     printf("Bienvenido %s\n",c.nombre);
                     fflush(stdout);
                 }
+        
+            {
+                /* code */
+            }
+            ;
                 
                 break;
                 /*do{
@@ -70,6 +76,7 @@ int main(int argc, char const *argv[]){
                 break;
         }
     
+    if(comprobarEdad(c)==1){
     do{
         opcion2 = menuPrincipal();
         switch(opcion2){
@@ -122,6 +129,7 @@ int main(int argc, char const *argv[]){
                 
         }
     }while(opcion2!='0');
+}
     
     
     return 0;
