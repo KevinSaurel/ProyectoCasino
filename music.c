@@ -9,14 +9,6 @@ int music() {
     PlaySound("CasinoMusic.wav", NULL, SND_FILENAME | SND_ASYNC);
 
     // El resto del programa continúa ejecutándose
-    int count=10;
-    for (size_t i = 0; i < count; i++)
-    {
-        sleep(1000);
-        /* code */
-        PlaySound("CasinoMusic.wav", NULL, SND_FILENAME | SND_ASYNC);
-
-    }
-
+    
     return 0;
 }
