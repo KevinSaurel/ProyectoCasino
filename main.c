@@ -10,6 +10,7 @@ int main(int argc, char const *argv[]){
 
 
 
+
     char opcion,opcion2,opcion3;
 
     //este NO es un do while, solo queremos que se runee una vez.
@@ -29,40 +30,11 @@ int main(int argc, char const *argv[]){
                     fflush(stdout);
                     borrarDatosCliente(&c);
                     break;//salimos del switch
-
                 }else{
                     printf("Bienvenido %s\n",c.nombre);
                     fflush(stdout);
                 }
-        
-            {
-                /* code */
-            }
-            ;
-                
                 break;
-                /*do{
-
-
-                    opcion2 = TragaPerras();
-                    switch(opcion2){
-                        case '1':
-                            printf("Jugando\n");
-                            fflush(stdout);
-                            StartTragaPerras();
-                            break;
-                        case '0':
-                            printf("Salir del juego\n");
-                            fflush(stdout);
-                            flag = 1;
-                            break;
-                        default:
-                            printf("Opcion no valida\n");
-                            fflush(stdout);
-                            break;
-                    }
-                }while(opcion2!='0');
-                break;*/
             case '2':
                 cargarDatosCliente(&c);
 
@@ -76,7 +48,6 @@ int main(int argc, char const *argv[]){
                 printf("Opción no válida\n");
                 break;
         }
-    
     if(comprobarEdad(c)==1){
     do{
         opcion2 = menuPrincipal();
@@ -84,12 +55,18 @@ int main(int argc, char const *argv[]){
             case '1':
                 do{
                     opcion3 = menuJuegos();
+                    if (bancaRota(&c)==1)
+                    {//condicion que comprueba que el jugador tiene dinero
                     switch(opcion3){
+                        
+                        
+                        
+                        
                         case '1'://este es el tragaperras
                         //aqui se pone el menu de tragaperras
 
 
-                            TragaPerras();
+                            TragaPerras(c);
                             break;
                         case '2'://este es la carrera de caballos
                             
@@ -105,7 +82,11 @@ int main(int argc, char const *argv[]){
                             printf("Opcion no valida\n");
                             fflush(stdout);
                             break;
+                        }
                     }
+                    printf("No tienes dinero suficiente para jugar\n");
+                    fflush(stdout);
+                    break;
                 }while(opcion3!='0');
                 break;
             case '2':
@@ -129,7 +110,7 @@ int main(int argc, char const *argv[]){
                 fflush(stdout);
                 
         }
-    }while(opcion2!='0');
+    }while(opcion2!='0'&&bancaRota(&c)==1);
 }
     
     

@@ -6,22 +6,37 @@ void pedirPrestamo(Cliente *c){
     float prestamo;
     printf("Ingrese el monto del prestamo: ");
     scanf("%f", &prestamo);
+    if (prestamo < 0 )
+    {
+        printf("No se puede pedir un prestamo negativo\n");
+        return;
+    }
     c->dinero += prestamo; 
     c->deuda += prestamo; 
-    //printf("Ingrese la cantidad de cuotas: ");
-   // scanf("%d", &c->cuotas);
-   // printf("Ingrese el interes: ");
-   // scanf("%f", &c->interes);
 }
-
-void devolverDeuda(Cliente *c){
+void devolverDeuda(Cliente *c){//problema, si pides un prestamo muy generoso, no puedes devolverlo
     printf("El monto a devolver es: %.2f\n", c->deuda * 1.05);//interes del 5%
     if(c->dinero >= c->deuda * 1.05){
         c->dinero -= c->deuda * 1.05;
         c->deuda = 0;
+        printf("Deuda pagada, tenga un buen dia\n");
+
     }else{
         printf("No tiene suficiente dinero para devolver la deuda\n");
+        bancaRota(c);
     }
+}
+int bancaRota(Cliente *c){
+    if(c->dinero < 0&&c->deuda >= c->dinero ){
+        c->deuda -= c->dinero;//el dinero esta en negativo, por lo que le restamos(negativo-negativo = positivo) creo
+        c->dinero = 0;
+        printf("Debe mas dinero del que pose, el casino procedera a cobrar su deuda\n");
+        //para que no se pueda seguir jugando aun estando en negativo ofreceremos 50 euros de prestamo
+        printf("Se le ofrecera otra oportunidad de empezar de 0\n");//esta parte se borrara cuando se implemente el fichero
+        c->dinero = 50;
+        return 0;
+    }
+    return 1;
 }
 int comprobarEdad(Cliente c){
     if(c.edad >= 18){
