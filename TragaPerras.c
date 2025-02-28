@@ -65,7 +65,7 @@ void StartTragaPerras(Cliente *c){
           if (_kbhit()) {  
                printf("\n\n                          JUEGO DETENIDO!      ");
                int stp = getch(); 
-               if(num1==num2==num3){//win grande 
+               if(num1==num2&& num2==num3){//win grande 
                     c->dinero = c->dinero + apuesta*10;//hay que modificar esto cuando ponga mas formas de apostar
                     printf("\n====================================================================================\n");
                     printf("                          GANASTE EL PREMIO GRANDE !!!                          \n");
