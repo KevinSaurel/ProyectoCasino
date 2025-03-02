@@ -11,8 +11,16 @@ typedef struct
     float deuda;//se inicializa a 0
     //int estadisticas; //contador de partidas jugadas, se pueden crear mas de este tipo
     //por ejemplo dinero ganado apostando, y con los ficheros se podemos crear hasta una leaderBoard
-
+    /*podemos usar un Array de ints, que almacene las veces que ha ganado una partida el jugador
+    ejemplo:int[3]= en la posicion [0] guardamos la cantidad de veces que ha ganado en la tragaperras y asi*/
 }Cliente;
+
+typedef struct //para la hora de querer mostrar los datos de mas de un cliente necesitaremos guardarlos en una lista dinamica
+{//con esto ya tendriamos el minimo de listas dinamicas en el proyecto
+    Cliente *clientes;
+    int numClientes;
+}ListaClientes;//por ahora no haremos uso de esta estructura, sera util cuando toque la segunda parte de servers
+
 int comprobarEdad(Cliente c);//devuelve 1 si es mayor a 18, 0 si es menor
 void pedirDatosCliente(Cliente *c);
 void cargarDatosCliente(Cliente *c);

@@ -48,7 +48,7 @@ int main(int argc, char const *argv[]){
                 printf("Opción no válida\n");
                 break;
         }
-    if(comprobarEdad(c)==1){
+    if(comprobarEdad(c)==1&&opcion!='0'){
     do{
         opcion2 = menuPrincipal();
         switch(opcion2){
