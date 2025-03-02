@@ -1,22 +1,26 @@
 #include <windows.h>
 #include <mmsystem.h>
 #include <stdio.h>
+#include <conio.h> // For _kbhit() and getch()
+#include <stdlib.h> // For rand() and srand()
+#include <time.h> // For time()
 
 #pragma comment(lib, "winmm.lib") // Enlaza la biblioteca multimedia de Windows
 
-int music() {
+void music() {
+    const char *songs[] = {"canciones/CasinoMusic.wav", "canciones/Candy.wav"};
+    int totalSongs = sizeof(songs) / sizeof(songs[0]);
+    int currentSong;
+
+    // Seed the random number generator
+    srand(time(NULL));
+
+    // Pick a random song to start with
+    currentSong = rand() % totalSongs;
+
     // Reproducir el archivo .wav en segundo plano
-    PlaySound("CasinoMusic.wav", NULL, SND_FILENAME | SND_ASYNC);
+    PlaySound(songs[currentSong], NULL, SND_FILENAME | SND_ASYNC);
 
-    // El resto del programa continúa ejecutándose
-    int count=10;
-    for (size_t i = 0; i < count; i++)
-    {
-        Sleep(1000);
-        /* code */
-        PlaySound("CasinoMusic.wav", NULL, SND_FILENAME | SND_ASYNC);
-
-    }
-
-    return 0;
+    // Continuously check for key presses and song end
+ 
 }
