@@ -11,7 +11,7 @@
 #pragma comment(lib, "winmm.lib") // Enlaza la biblioteca multimedia de Windows
 
 void music() {
-    const char *songs[] = {"canciones/CasinoMusic.wav", "canciones/Candy.wav","canciones/cantina.wav"};
+    const char *songs[] = {"canciones/CasinoMusic.wav", "canciones/cantina.wav"};
     int totalSongs = sizeof(songs) / sizeof(songs[0]);
     int currentSong;
 
