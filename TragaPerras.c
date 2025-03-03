@@ -63,8 +63,15 @@ void StartTragaPerras(Cliente *c){
           printf("                           || %s || %s || %s ||\n",fruits[num1], fruits[num2], fruits[num3]);
           //scanf("%i", &flag);
           if (_kbhit()) {  
-               printf("\n\n                          JUEGO DETENIDO!      ");
+               
                int stp = getch(); 
+               if(stp == 'e'){//easterEgg
+                    num2 = num1;
+                    num3 = num1;
+                    printf("                           || %s || %s || %s ||\n",fruits[num1], fruits[num2], fruits[num3]);
+               }
+
+               printf("\n\n                          JUEGO DETENIDO!      \n");
                if(num1==num2&& num2==num3){//win grande 
                     c->dinero = c->dinero + apuesta*10;//hay que modificar esto cuando ponga mas formas de apostar
                     printf("\n====================================================================================\n");
