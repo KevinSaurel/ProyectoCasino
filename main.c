@@ -47,6 +47,8 @@ int main(int argc, char const *argv[]){
                 break;
             default:
                 printf("Opción no válida\n");
+                opcion='0';
+                fflush(stdout);
                 break;
         }
     if(comprobarEdad(c)==1&&opcion!='0'){
