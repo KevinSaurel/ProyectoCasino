@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "menus.h"
+#include "music.h"
 #include "personas.h"
 #include "tragaperras.h"
 #include <stdlib.h>// para el rands
@@ -73,12 +74,14 @@ void StartTragaPerras(Cliente *c){
 
                printf("\n\n                          JUEGO DETENIDO!      \n");
                if(num1==num2&& num2==num3){//win grande 
+                    
                     c->dinero = c->dinero + apuesta*10;//hay que modificar esto cuando ponga mas formas de apostar
                     printf("\n====================================================================================\n");
                     printf("                          GANASTE EL PREMIO GRANDE !!!                          \n");
                     printf("                             Apuestax10!                                        \n");
                     printf("                                                       Saldo:%.2f              \n", c->dinero);
                     printf("====================================================================================\n");
+                    playSong("canciones/tragaperrasWin.wav");
                } 
                else if (num1==num2 || num1==num3 || num2==num3){//partial win  solo hay dos que coinciden 
                     c->dinero = c->dinero + apuesta*5;
@@ -87,6 +90,7 @@ void StartTragaPerras(Cliente *c){
                    printf("                     Números obtenidos:  %s || %s || %s                                 \n", fruits[num1], fruits[num2], fruits[num3]);
                    printf("                                                       Saldo:%.2f              \n", c->dinero);
                    printf("====================================================================================\n");
+                   playSong("canciones/tragaperrasWin.wav");
               }else{
                c->dinero = c->dinero - apuesta;
                printf("\n====================================================================================\n");

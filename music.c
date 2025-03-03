@@ -4,11 +4,14 @@
 #include <conio.h> // For _kbhit() and getch()
 #include <stdlib.h> // For rand() and srand()
 #include <time.h> // For time()
+#include <string.h> 
+#include "music.h"
+
 
 #pragma comment(lib, "winmm.lib") // Enlaza la biblioteca multimedia de Windows
 
 void music() {
-    const char *songs[] = {"canciones/CasinoMusic.wav", "canciones/Candy.wav"};
+    const char *songs[] = {"canciones/CasinoMusic.wav", "canciones/Candy.wav","canciones/cantina.wav"};
     int totalSongs = sizeof(songs) / sizeof(songs[0]);
     int currentSong;
 
@@ -23,4 +26,19 @@ void music() {
 
     // Continuously check for key presses and song end
  
+}
+void playSong(const char *song) {
+    PlaySound(song, NULL, SND_FILENAME | SND_ASYNC);
+    int i = 0;
+    while (i < 7) {
+        
+        Sleep(1000);
+        i++;
+        if(i==6){
+    music();
+        
+    }
+    
+    
+}
 }
