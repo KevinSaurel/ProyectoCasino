@@ -8,7 +8,7 @@
 #include <conio.h>   // For kbhit() //waits for a key to be pressed
 #include <windows.h> // For Sleep() //sleep
 // A TRAGGAAAAARRRRRRRRRRRRRR 
-void TragaPerras(Cliente c){//el menu se crea en el main, y las partes de arriba en la clase menu
+void TragaPerras(Cliente *c){//el menu se crea en el main, y las partes de arriba en la clase menu
      int flag = 0;
      
 
@@ -18,7 +18,7 @@ void TragaPerras(Cliente c){//el menu se crea en el main, y las partes de arriba
      printf("====================================================================================\n");
      printf("                                  REGLAS                 COSTE                         \n");
      printf("                         - Tres numeros son x10        -Cada tirada son 10€             \n");//podemos poner distintos tipos de apuestas, solo preguntamelo si lo quieres
-     printf("                         - Dos numeros son x5          -Saldo:%.2f                           \n",c.dinero);
+     printf("                         - Dos numeros son x5          -Saldo:%.2f                           \n",c->dinero);
      printf("====================================================================================\n\n");
 
      printf("                                 [1] Jugar                                           \n");
@@ -30,7 +30,7 @@ void TragaPerras(Cliente c){//el menu se crea en el main, y las partes de arriba
                     case 1:
                     printf("\n                             EMPEZANDO JUEGO                            \n");
                     printf("====================================================================================\n");
-                    StartTragaPerras(&c);
+                    StartTragaPerras(c);
                     break;
                     case 0:
                     flag = 1;
@@ -42,9 +42,6 @@ void TragaPerras(Cliente c){//el menu se crea en el main, y las partes de arriba
                     printf("====================================================================================\n");
                     break;
                }
-           
-
-     
 
 }
 void StartTragaPerras(Cliente *c){

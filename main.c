@@ -69,7 +69,7 @@ int main(int argc, char const *argv[]){
                         //aqui se pone el menu de tragaperras
 
 
-                            TragaPerras(c);
+                            TragaPerras(&c);
                             break;
                         case '2'://este es la carrera de caballos
                             carrera(c);

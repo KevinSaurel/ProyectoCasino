@@ -50,6 +50,7 @@ void carrera(Cliente c){//el menu se crea en el main, y las partes de arriba en 
 }
 void startCarrera(Cliente *c){
     int  flag=0;
+    int cantidadCaballos = 3;//modificar esto para que se pueda elegir la cantidad de caballos
     int apuesta = 10;//habria que escribir un scan para pedir la apuesta, pero habria que poner comprobaciones de que no apueste en negativo
     //primero lo probare con una apuesta fija
     printf("\n                           CARRERA EN MARCHA...                               \n");
@@ -70,7 +71,13 @@ void startCarrera(Cliente *c){
         system("cls");
 
         // Imprimir la pista de la carrera
-        printf("Caballo 1: |");
+
+        for (int i = 0; i < cantidadCaballos; i++)
+        {
+            imprimirPistaCarrera(i);
+        }
+        
+        /*printf("Caballo 1: |");
         for (int i = 0; i <= MAX_DISTANCE; i++) {
             if (i == c1) printf("🐎");
             else if (i == MAX_DISTANCE) printf("| 🏁​ |"); // Meta al final
@@ -92,7 +99,7 @@ void startCarrera(Cliente *c){
             else if (i == MAX_DISTANCE) printf("| 🏁​ |");
             else printf(" ");
         }
-        printf("\n");
+        printf("\n");*/
         printf("---------------------------------------------------------------------\n---------------------------------------------------------------------\n");
         fflush(stdout);
 
@@ -104,7 +111,12 @@ void startCarrera(Cliente *c){
     printf("\n¡Carrera terminada! Gracias por participar!\n");
     fflush(stdout);
 
-    if (c1 >= MAX_DISTANCE){
+    for (int i = 0; i < cantidadCaballos; i++)
+    {
+        caballoGanador(i);
+    }
+
+    /*if (c1 >= MAX_DISTANCE){
         printf("¡Caballo 1 gana!\n");
     	fflush(stdout);
     }
@@ -117,6 +129,21 @@ void startCarrera(Cliente *c){
     if (c3 >= MAX_DISTANCE){
         printf("¡Caballo 3 gana!\n");
     	fflush(stdout);
-    }
+    }*/
 
+}
+void imprimirPistaCarrera(int caballo){
+printf("Caballo %d: |", caballo+1);
+        for (int i = 0; i <= MAX_DISTANCE; i++) {
+            if (i == caballo) printf("🐎");
+            else if (i == MAX_DISTANCE) printf("| 🏁​ |"); // Meta al final
+            else printf(" ");
+        }
+        printf("\n");
+}
+void caballoGanador(int caballo){
+    if (caballo >= MAX_DISTANCE){
+        printf("¡Caballo %d gana!\n", caballo+1);
+    	fflush(stdout);
+    }
 }
