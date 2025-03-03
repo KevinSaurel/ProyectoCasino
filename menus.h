@@ -5,5 +5,6 @@ char menuPrincipal();
 char menuJuegos();
 char menuSesion();
 char menuTragaperras();
+char menuCarrera();
 
 #endif /* MENUS_H_ */

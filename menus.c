@@ -57,3 +57,17 @@ char menuTragaperras(){
 	scanf("%c",&opcion);
 	return opcion;
 }
+
+char menuCarrera(){
+	char opcion;
+	
+	printf("1. Jugar\n");
+	//printf("2. Guardar partida\n"); //se guardara cada vez que le demos a salir
+	//se implemnetara con los ficheros
+	printf("0. Salir de la carrera\n");
+	printf("Elige una opcion: ");
+	fflush(stdout);
+	fflush(stdin);
+	scanf("%c",&opcion);
+	return opcion;
+}
