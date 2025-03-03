@@ -6,7 +6,7 @@
 #include <time.h> // para el time
 #include <conio.h>   // For kbhit() //waits for a key to be pressed
 #include <windows.h> // For Sleep() //sleep
-#include <stdlib.h>0
+
 
 #define MAX_DISTANCE 50  // Distancia de la carrera
 void carrera(Cliente c){//el menu se crea en el main, y las partes de arriba en la clase menu
@@ -70,46 +70,27 @@ void startCarrera(Cliente *c){
         system("cls");
 
         // Imprimir la pista de la carrera
-        printf("Caballo 1: ");
-        fflush(stdout);
-        for (int i = 0; i < MAX_DISTANCE; i++) {
-            if (i == c1){
-                printf("🐎​​");
-                fflush(stdout);
-            }else{
-                printf(" ");
-                fflush(stdout);
-            }
+        printf("Caballo 1: |");
+        for (int i = 0; i <= MAX_DISTANCE; i++) {
+            if (i == c1) printf("🐎");
+            else if (i == MAX_DISTANCE) printf("| 🏁​ |"); // Meta al final
+            else printf(" ");
         }
         printf("\n");
-        fflush(stdout);
 
-        printf("Caballo 2: ");
-        fflush(stdout);
-        for (int i = 0; i < MAX_DISTANCE; i++) {
-            if (i == c2){
-                printf("🐎​​");
-                fflush(stdout);
-
-            }else{
-                printf(" ");
-                fflush(stdout);
-            }
+        printf("Caballo 2: |");
+        for (int i = 0; i <= MAX_DISTANCE; i++) {
+            if (i == c2) printf("🐎");
+            else if (i == MAX_DISTANCE) printf("| 🏁​ |");
+            else printf(" ");
         }
         printf("\n");
-        fflush(stdout);
 
-        printf("Caballo 3: ");
-        fflush(stdout);
-        for (int i = 0; i < MAX_DISTANCE; i++) {
-            if (i == c3){
-                printf("🐎​​");
-                fflush(stdout);
-            }else{
-                printf(" ");
-                fflush(stdout);
-
-            }
+        printf("Caballo 3: |");
+        for (int i = 0; i <= MAX_DISTANCE; i++) {
+            if (i == c3) printf("🐎");
+            else if (i == MAX_DISTANCE) printf("| 🏁​ |");
+            else printf(" ");
         }
         printf("\n");
         printf("---------------------------------------------------------------------\n---------------------------------------------------------------------\n");
