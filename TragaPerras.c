@@ -103,12 +103,12 @@ void StartTragaPerras(Cliente *c){
           
           int opcion;
           scanf("%d", &opcion);
+
           if(opcion == 0) {
                flag = 1;
                printf("\n                              HASTA PRONTO!                                   \n");
                printf("====================================================================================\n");
           } else {
-               flag = 0;
                printf("\n                           TRAGAPERRAS EN MARCHA...                              \n");
                printf("                      Presiona cualquier tecla para detener                       \n\n");
           }

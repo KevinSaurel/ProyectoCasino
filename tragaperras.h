@@ -3,7 +3,7 @@
 #include "personas.h"
 
 
-void TragaPerras(Cliente c);
+void TragaPerras(Cliente *c);
 void StartTragaPerras(Cliente *c);
 
 #endif // 
