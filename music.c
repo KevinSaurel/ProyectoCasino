@@ -30,11 +30,11 @@ void music() {
 void playSong(const char *song) {
     PlaySound(song, NULL, SND_FILENAME | SND_ASYNC);
     int i = 0;
-    while (i < 7) {
+    while (i < 4) {
         
         Sleep(1000);
         i++;
-        if(i==6){
+        if(i==3){
     music();
         
     }
