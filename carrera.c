@@ -9,7 +9,7 @@
 
 
 #define MAX_DISTANCE 50  // Distancia de la carrera
-#define MAX_CABALLOS 3 //numero de caballos en la carrera, modificar esto para que se pueda elegir la cantidad de caballos
+#define MAX_CABALLOS 5 //numero de caballos en la carrera, modificar esto para que se pueda elegir la cantidad de caballos
 void carrera(Cliente c){//el menu se crea en el main, y las partes de arriba en la clase menu
      int flag = 0;
      
@@ -56,6 +56,7 @@ void startCarrera(Cliente *c){
     //primero lo probare con una apuesta fija
     printf("\n                           CARRERA EN MARCHA...                               \n");
     printf("                      Presiona cualquier tecla para detener                       \n\n");
+    
     
     
 
@@ -151,11 +152,12 @@ void startCarrera(Cliente *c){
 void imprimirPistaCarrera(Caballo caballo){
 printf("Caballo %d: |", caballo.numero);
         for (int i = 0; i <= MAX_DISTANCE; i++) {
-            if (i == caballo.posicion) printf("🐎");
+            if (i == caballo.posicion) {printf("🐎"); fflush(stdout);}
             else if (i == MAX_DISTANCE) printf("| 🏁​ |"); // Meta al final
-            else printf(" ");
+            else printf(" ");fflush(stdout);
         }
         printf("\n");
+        fflush(stdout);
 }
 void caballoGanador(Caballo caballo){
     if (caballo.posicion >= MAX_DISTANCE){
