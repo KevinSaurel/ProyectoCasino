@@ -34,6 +34,7 @@ int main(int argc, char const *argv[]){
                     break;//salimos del switch
                 }else{
                     printf("Bienvenido %s\n",c.nombre);
+                    Sleep(2);
                     fflush(stdout);
                 }
                 break;
@@ -95,16 +96,16 @@ int main(int argc, char const *argv[]){
                 break;
             case '2':
                 mostrarBalanceBanco(c);
-                sleep(4);
+                Sleep(4);
                 break;
             case '3':
                 pedirPrestamo(&c);
                 mostrarBalanceBanco(c);
-                sleep(4);
+                Sleep(4);
                 break;
             case '4':
                 devolverDeuda(&c);
-                sleep(4);
+                Sleep(4);
                 break;
             case '0':
                 printf("Hasta la proxima\n");
