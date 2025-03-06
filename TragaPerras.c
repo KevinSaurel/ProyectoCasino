@@ -53,13 +53,31 @@ void StartTragaPerras(Cliente *c){
           
     srand(time(NULL));
      while (flag==0){
-          const char *fruits[] = {"🍒", "🍋", "🍊", "🍉", "🍇", "🍓"};
+          const char *fruits[] = {"🍒", "🍋", "🍊", "🍉", "🍇", "🍓",/*"💀","❤️","👽","🏆"*/};//le he metido mas emojis, pero son de diferentes tamaños qeuda feo
+          int cantidadDeFrutas = sizeof(fruits)/sizeof(fruits[0]);
+          
           Sleep(500);
-          int num1 = rand()%6;
-          int num2 = rand()%6;
-          int num3 = rand()%6;
-          printf("                           || %s || %s || %s ||\n",fruits[num1], fruits[num2], fruits[num3]);
+          
+     
+        
+          system("cls");
+          //he intentado hacerlo creando una structura que guarde la posicion y el random, pero casi me vuelvo loco al ver que tenia que cambiar todo el codigo
+          int num1 = rand()%cantidadDeFrutas;
+          int num2 = rand()%cantidadDeFrutas;
+          int num3 = rand()%cantidadDeFrutas;
+          int num4 = rand()%cantidadDeFrutas;
+          int num5 = rand()%cantidadDeFrutas;
+          int num6 = rand()%cantidadDeFrutas;
+          int num7 = rand()%cantidadDeFrutas;
+          int num8 = rand()%cantidadDeFrutas;
+          int num9 = rand()%cantidadDeFrutas;
+          //este codigo es una chapuza, ya mañana me pongo a meterle horas, es mas complicado de lo que pensaba
+          printf("                           || %s || %s || %s ||\n                           || %s || %s || %s ||\n                           || %s || %s || %s ||\n",fruits[num4], fruits[num5], fruits[num6],fruits[num1], fruits[num2], fruits[num3],fruits[num7], fruits[num8], fruits[num9]);
           //scanf("%i", &flag);
+          /*Sleep(500);
+          system("cls");
+          printf("                           || %s || %s || %s ||\n|| %s || %s || %s ||\n|| %s || %s || %s ||\n",fruits[num4], fruits[num5], fruits[num6],fruits[num1], fruits[num2], fruits[num3],fruits[num7], fruits[num8], fruits[num9]);
+*/
           if (_kbhit()) {  
                
                int stp = getch(); 
