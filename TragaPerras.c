@@ -79,6 +79,16 @@ void StartTragaPerras(Cliente *c){
           printf("                           || %s || %s || %s ||\n|| %s || %s || %s ||\n|| %s || %s || %s ||\n",fruits[num4], fruits[num5], fruits[num6],fruits[num1], fruits[num2], fruits[num3],fruits[num7], fruits[num8], fruits[num9]);
 */
           if (_kbhit()) {  
+               int endTimer =500;
+               printf("\n                           TRAGAPERRAS DETENIDO!                               \n");
+               while(endTimer<1400){
+                    num1 = rand()%6;
+                    num2 = rand()%6;
+                    num3 = rand()%6;
+                    Sleep(endTimer);
+                    printf("                           || %s || %s || %s ||\n",fruits[num1], fruits[num2], fruits[num3]);
+                    endTimer = endTimer + 200;
+               }
                
                int stp = getch(); 
                if(stp == 'e'){//easterEgg
@@ -132,6 +142,9 @@ void StartTragaPerras(Cliente *c){
           }
      }
 }
+}
+void end(){
+
 }
 // A TRAGGAAAAARRRRRRRRRRRRRR
      
