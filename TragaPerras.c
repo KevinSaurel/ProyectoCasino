@@ -170,9 +170,9 @@ void ImprimirTragaPerras(ListaPosiciones lp){
           printf("                      :#################=.      *  \n");
           printf("                    =======================   =##= \n");
           printf("                   =|++++++*++++++++*++++++|= .[]. \n");
-          printf("                   =|  %s  |   %s   |  %s  |* .[]. \n", fruits[lp.p[idx+3].random], fruits[lp.p[idx+4].random], fruits[lp.p[idx+5].random]);
+          printf("                   =|  %s  |   %s   |  %s  |* .[]. \n", fruits[lp.p[idx].random], fruits[lp.p[idx+1].random], fruits[lp.p[idx+2].random]);
           printf("                  -=|------|--------|------|* .[]. \n");
-          printf("                  -=|  %s  |   %s   |  %s  |* .[]. \n", fruits[lp.p[idx].random], fruits[lp.p[idx+1].random], fruits[lp.p[idx+2].random]);
+          printf("                  -=|  %s  |   %s   |  %s  |* .[]. \n", fruits[lp.p[idx+3].random], fruits[lp.p[idx+4].random], fruits[lp.p[idx+5].random]);
           printf("                  -=|------|--------|------|*----. \n");
           printf("                   =|  %s  |   %s   |  %s  |*----. \n", fruits[lp.p[idx+6].random], fruits[lp.p[idx+7].random], fruits[lp.p[idx+8].random]);
           printf("                   =#======#========#======#*       \n");
