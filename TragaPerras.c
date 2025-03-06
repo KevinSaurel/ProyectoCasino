@@ -11,6 +11,7 @@
 
 void TragaPerras(Cliente *c){//el menu se crea en el main, y las partes de arriba en la clase menu
      int flag = 0;
+     system("cls");
      
 
 
@@ -170,7 +171,7 @@ void ImprimirTragaPerras(ListaPosiciones lp){
           printf("                      :#################=.      *  \n");
           printf("                    =======================   =##= \n");
           printf("                   =|++++++*++++++++*++++++|= .[]. \n");
-          printf("                   =|  %s  |   %s   |  %s  |* .[]. \n", fruits[lp.p[idx].random], fruits[lp.p[idx+1].random], fruits[lp.p[idx+2].random]);
+          printf("                   =|  %s  |   %s   |  %s  |* .[]. \n", fruits[lp.p[idx+3].random], fruits[lp.p[idx+4].random], fruits[lp.p[idx+5].random]);
           printf("                  -=|------|--------|------|* .[]. \n");
           printf("                  -=|  %s  |   %s   |  %s  |* .[]. \n", fruits[lp.p[idx+3].random], fruits[lp.p[idx+4].random], fruits[lp.p[idx+5].random]);
           printf("                  -=|------|--------|------|*----. \n");

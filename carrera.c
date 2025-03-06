@@ -13,7 +13,7 @@
 void carrera(Cliente c){//el menu se crea en el main, y las partes de arriba en la clase menu
      int flag = 0;
      
-
+     system("cls");
 
      printf("\n====================================================================================\n");
      printf("                              BIENVENIDO A LA CARRERA DE CABALLOS                              \n");//Por ahora de caballos, sujeto a cambio

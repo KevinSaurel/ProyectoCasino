@@ -3,6 +3,7 @@
 #include "personas.h"
 #include "menus.h"
 #include "music.h"
+#include <windows.h>
 #include "carrera.h"
 int main(int argc, char const *argv[]){
     Cliente c;//inicializamos el cliente
@@ -87,19 +88,23 @@ int main(int argc, char const *argv[]){
                             break;
                         }
                     }
-                    printf("No tienes dinero suficiente para jugar\n");
+                    //printf("No tienes dinero suficiente para jugar\n");
                     fflush(stdout);
                     break;
                 }while(opcion3!='0');
                 break;
             case '2':
                 mostrarBalanceBanco(c);
+                sleep(4);
                 break;
             case '3':
                 pedirPrestamo(&c);
+                mostrarBalanceBanco(c);
+                sleep(4);
                 break;
             case '4':
                 devolverDeuda(&c);
+                sleep(4);
                 break;
             case '0':
                 printf("Hasta la proxima\n");
