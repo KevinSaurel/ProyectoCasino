@@ -1,6 +1,7 @@
 #include "menus.h"
 #include "personas.h"
 #include <stdio.h>
+#include <stdlib.h> 
 
 char menuJuegos() {
     char opcion;
