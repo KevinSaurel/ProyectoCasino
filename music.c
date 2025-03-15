@@ -27,16 +27,16 @@ void music() {
     // Continuously check for key presses and song end
  
 }
-void playSong(const char *song) {
+void playSong(const char *song,int tiempo) {
     PlaySound(song, NULL, SND_FILENAME | SND_ASYNC);
     int i = 0;
-    while (i < 4) {
+    while (i < tiempo) {
         
         Sleep(1000);
         i++;
-        if(i==3){
-    music();
-        
+        if(i==tiempo){
+        music();
+        break;
     }
     
     
