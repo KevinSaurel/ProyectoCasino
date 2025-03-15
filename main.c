@@ -96,16 +96,13 @@ int main(int argc, char const *argv[]){
                 break;
             case '2':
                 mostrarBalanceBanco(c);
-                Sleep(4);
                 break;
             case '3':
                 pedirPrestamo(&c);
                 mostrarBalanceBanco(c);
-                Sleep(4);
                 break;
             case '4':
                 devolverDeuda(&c);
-                Sleep(4);
                 break;
             case '0':
                 printf("Hasta la proxima\n");
@@ -119,6 +116,7 @@ int main(int argc, char const *argv[]){
                 fflush(stdout);
                 
         }
+        Sleep(4000);
     }while(opcion2!='0'&&bancaRota(&c)==1);
 }
     
