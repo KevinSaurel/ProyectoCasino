@@ -5,11 +5,14 @@
 #include "music.h"
 #include <windows.h>
 #include "carrera.h"
+#include <stdlib.h> // for rand and system
+
 int main(int argc, char const *argv[]){
     Cliente c;//inicializamos el cliente
     //cuando tengamos ficheros se cargaran la informacion al selecionar la opcion 2 en el menu sesion
     music();
 
+    int numeroAlt = 0;
 
 
 
@@ -17,6 +20,8 @@ int main(int argc, char const *argv[]){
 
     //este NO es un do while, solo queremos que se runee una vez.
         printf("Bienvenido al Casino\n");
+
+
         fflush(stdout);
         //despues de cargar los datos del cliente se mostrara el menu principal
 
@@ -59,6 +64,10 @@ int main(int argc, char const *argv[]){
         switch(opcion2){
             case '1':
                 do{
+                    int numeroAlt = rand() % 50;
+                    if(numeroAlt == 50){
+                        playSong("canciones/letsgogambling.wav",2);
+                    }
                     opcion3 = menuJuegos();
                     if (bancaRota(&c)==1)
                     {//condicion que comprueba que el jugador tiene dinero
@@ -116,7 +125,7 @@ int main(int argc, char const *argv[]){
                 fflush(stdout);
                 
         }
-        Sleep(4000);
+        Sleep(3000);
     }while(opcion2!='0'&&bancaRota(&c)==1);
 }
     
