@@ -2,7 +2,7 @@
 #define MUSICH_
 
 void music() ;
-void playSong(const char *song) ;
+void playSong(const char *song,int tiempo) ;
 
 
 #endif /* MENUS_H_ */
