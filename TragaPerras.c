@@ -86,14 +86,14 @@ void StartTragaPerras(Cliente *c) {
                 printf("                             Apuestax10!                                        \n");
                 printf("                                                       Saldo:%.2f              \n", c->dinero);
                 printf("====================================================================================\n");
-                playSong("canciones/tragaperrasWin.wav");
+                playSong("canciones/tragaperrasWin.wav",3);
             } else if (p.p[3].random == p.p[4].random || p.p[3].random == p.p[5].random || p.p[4].random == p.p[5].random) { // partial win
                 c->dinero += apuesta * 5;
                 printf("\n====================================================================================\n");
                 printf("                         GANASTE PREMIO MEDIO!                                     \n");
                 printf("                                                       Saldo:%.2f              \n", c->dinero);
                 printf("====================================================================================\n");
-                playSong("canciones/tragaperrasWin.wav");
+                playSong("canciones/tragaperrasWin.wav",3);
             } else {
                 c->dinero -= apuesta;
                 printf("\n====================================================================================\n");
