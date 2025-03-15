@@ -21,7 +21,7 @@ typedef struct{
     int numCarreras;
 }ListaCarreras;
 
-void carrera(Cliente c);
+void carrera(Cliente c, ListaCarreras lc);
 void startCarrera(Cliente *c, Carrera ca);
 void imprimirPistaCarrera(Caballo caballo, Carrera c);
 void caballoGanador(Caballo caballo, Carrera c);
