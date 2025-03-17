@@ -6,6 +6,7 @@
 #include <windows.h>
 #include "carrera.h"
 #include <stdlib.h> // for rand and system
+#include "dado.h"
 
 int main(int argc, char const *argv[]){
     Cliente c;//inicializamos el cliente
@@ -72,10 +73,6 @@ int main(int argc, char const *argv[]){
                     if (bancaRota(&c)==1)
                     {//condicion que comprueba que el jugador tiene dinero
                     switch(opcion3){
-                        
-                        
-                        
-                        
                         case '1'://este es el tragaperras
                         //aqui se pone el menu de tragaperras
 
@@ -87,6 +84,9 @@ int main(int argc, char const *argv[]){
                             break;
                         case '3'://este es el blackjack
                             
+                            break;
+                        case '4'://este es el dado
+                            menuDados(&c);//pondre un menu para que escojas los valores que aparecen aqui
                             break;
                         case '0':
                             printf("Volver al menu principal\n");

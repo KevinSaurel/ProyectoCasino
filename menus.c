@@ -12,6 +12,7 @@ char menuJuegos() {
     printf("                     1. Maquina Tragaperras                                        \n");
     printf("                     2. Carrera de Caballos                                        \n");
     printf("                     3. Blackjack                                                  \n");
+    printf("                     4. Dados                                                      \n");
     printf("                     0. Salir                                                      \n");
     printf("====================================================================================\n");
     printf("                     Elige una opcion: ");
@@ -59,7 +60,7 @@ char menuSesion() {
     scanf("%c", &opcion);
     return opcion;
 }
-
+//los menus de juegos no se utilizan
 char menuTragaperras() {
     char opcion;
     system("cls");

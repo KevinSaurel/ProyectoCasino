@@ -1,6 +1,7 @@
 #include "personas.h"  
 #include <stdio.h>
 #include <string.h>
+#include <Windows.h>
 
 void pedirPrestamo(Cliente *c){
     float prestamo;
