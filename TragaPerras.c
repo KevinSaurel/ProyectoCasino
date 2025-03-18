@@ -136,8 +136,6 @@ void InicializarPosiciones(ListaPosiciones *lp, int cantidadDeFrutas) {
     for (int i = 0; i < lp->numeroDePosiciones; i++) {
         lp->p[i].random = rand() % cantidadDeFrutas;
         lp->p[i].posicion = i + 1;
-        // Debug print to check the initialization
-        printf("InicializarPosiciones - Posicion %d: %d\n", lp->p[i].posicion, lp->p[i].random);
     }
 }
 

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <Windows.h>
+#include "fichero.h"
 
 void pedirPrestamo(Cliente *c){
     float prestamo;
@@ -61,6 +62,8 @@ void cargarDatosCliente(Cliente *c){
     char nombre[50];
     printf("Ingrese el nombre de Usuario: ");
     scanf("%s", nombre);
+    *c =  getPersona(nombre, "ficheros/personas.txt") ;
+
     //cargar desde el fichero usando el nombre
     //if(nombre.existe){
     //    c->dinero = nombre.dinero;

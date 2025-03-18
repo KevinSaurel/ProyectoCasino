@@ -7,6 +7,7 @@
 #include "carrera.h"
 #include <stdlib.h> // for rand and system
 #include "dado.h"
+#include "fichero.h"
 
 int main(int argc, char const *argv[]){
     Cliente c;//inicializamos el cliente
@@ -33,6 +34,8 @@ int main(int argc, char const *argv[]){
 		switch (opcion) {
             case '1':    
                 pedirDatosCliente(&c);
+                guardarNuevaPersona( c, "ficheros/personas.txt" );
+
                 if(comprobarEdad(c)==0){
                     printf("El acceso a menores de edad no esta permitido\n");
                     fflush(stdout);
@@ -115,6 +118,8 @@ int main(int argc, char const *argv[]){
                 break;
             case '0':
                 printf("Hasta la proxima\n");
+                actualizarPersona(c,"ficheros/personas.txt");
+
                 fflush(stdout);
                 //guardar los cambios en el fichero
 
