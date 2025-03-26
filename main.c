@@ -12,6 +12,39 @@
 int main(int argc, char const *argv[]){
     Cliente c;//inicializamos el cliente
     //cuando tengamos ficheros se cargaran la informacion al selecionar la opcion 2 en el menu sesion
+    //lo siguiente son datos de prueba, esta informacion la cargaremos de una base de datos, pero hasta que implementemos eso creare unos datos de prueba
+    // Crear una lista de carreras
+    ListaCarreras listaCarreras;
+    listaCarreras.numCarreras = 0;
+
+    // Crear la primera carrera
+    Carrera carrera1;
+    carrera1.numCaballos = 8;
+    carrera1.distancia = 60;
+    strcpy(carrera1.nombre, "Gran Premio Basauri");
+    carrera1.premio = 50;
+
+    // Añadir la primera carrera a la lista
+    listaCarreras.aCarreras[listaCarreras.numCarreras++] = carrera1;
+
+    // Crear la segunda carrera
+    Carrera carrera2;
+    carrera2.numCaballos = 10;
+    carrera2.distancia = 50;
+    strcpy(carrera2.nombre, "Clásico Euskadi");
+    carrera2.premio = 70;
+
+    // Añadir la segunda carrera a la lista
+    listaCarreras.aCarreras[listaCarreras.numCarreras++] = carrera2;
+
+
+//estos datos se pueden poner con una funcion que sea añadir carrera, y guardarlo a la base de datos, pero con esto deberia funcionar por ahora
+
+
+
+
+
+
     music();
 
     int numeroAlt = 0;
@@ -83,7 +116,7 @@ int main(int argc, char const *argv[]){
                             TragaPerras(&c);
                             break;
                         case '2'://este es la carrera de caballos
-                            //carrera(c, ListaCarreras lc);
+                            carrera(c, listaCarreras);
                             break;
                         case '3'://este es el blackjack
                             

@@ -7,6 +7,7 @@
 typedef struct {
     int numero;
     int posicion;
+    int seleccionado;//si es 1 es el caballo por el cual hemos apostado, si no sera un 0
 } Caballo;
 
 typedef struct{
@@ -24,11 +25,12 @@ typedef struct{
 void carrera(Cliente c, ListaCarreras lc);
 void startCarrera(Cliente *c, Carrera ca);
 void imprimirPistaCarrera(Caballo caballo, Carrera c);
-void caballoGanador(Caballo caballo, Carrera c);
+void caballoGanador(Caballo caballo, Carrera c,Cliente *cliente);
 int carreraEnCurso(Caballo listaCaballos[], Carrera c);
 void visualizarCarrera(Carrera c);
 void visualizarCarreras(ListaCarreras lc);
 void visualizarTitulos();
 int seleccionarCarrera(ListaCarreras lc);
+
 
 #endif // 
