@@ -177,7 +177,7 @@ int carreraEnCurso(Caballo listaCaballos[], Carrera c) {//esta es la unica soluc
 }
 
 void visualizarTitulos() {
-	printf("%20d%20d%20s%15d\n", "NUM CABALLOS","DISTANCIA", "NOMBRE", "PREMIO");
+	printf("%20s%20s%20s%15s\n", "NUM CABALLOS","DISTANCIA", "NOMBRE", "PREMIO");
 }
 
 void visualizarCarrera(Carrera c) {
