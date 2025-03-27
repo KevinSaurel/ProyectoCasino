@@ -3,6 +3,8 @@
 #include <string.h>
 #include <Windows.h>
 #include "fichero.h"
+#include "config.h"
+#include "logger.h"
 
 void pedirPrestamo(Cliente *c){
     float prestamo;
@@ -92,4 +94,20 @@ void borrarDatosCliente(Cliente *c){
     c->edad = 0;
     c->dinero = 0;
     c->deuda = 0;
+}
+
+
+void compararDatosConfig(Cliente *c) {
+    Config config;
+	char user[TAM],con[TAM];
+
+	config = leerConfiguracion("configuracion.config");
+	writeLog("Configuración leída");
+
+    pedirDatosCliente(c);
+    if (strcmp(c->nombre, config.nombreAdmin) == 0 && strcmp(c->apellido, config.apellidoAdmin) == 0) {
+        writeLog("Inicio de sesión exitoso");
+    } else {
+        writeLog("Inicio de sesión fallido");
+    }
 }

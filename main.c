@@ -8,8 +8,11 @@
 #include <stdlib.h> // for rand and system
 #include "dado.h"
 #include "fichero.h"
+#include "logger.h"
+#include "config.h"
 
 int main(int argc, char const *argv[]){
+    //inicializamos el cliente
     Cliente c;//inicializamos el cliente
     //cuando tengamos ficheros se cargaran la informacion al selecionar la opcion 2 en el menu sesion
     //lo siguiente son datos de prueba, esta informacion la cargaremos de una base de datos, pero hasta que implementemos eso creare unos datos de prueba
@@ -66,8 +69,8 @@ int main(int argc, char const *argv[]){
 
 		switch (opcion) {
             case '1':    
-                pedirDatosCliente(&c);
-                guardarNuevaPersona( c, "ficheros/personas.txt" );
+                compararDatosConfig(&c);
+                guardarNuevaPersona(c, "ficheros/personas.txt" );
 
                 if(comprobarEdad(c)==0){
                     printf("El acceso a menores de edad no esta permitido\n");

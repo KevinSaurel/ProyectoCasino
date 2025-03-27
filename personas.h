@@ -31,6 +31,6 @@ void devolverDeuda(Cliente *c);
 void borrarDatosCliente(Cliente *c);
 int bancaRota(Cliente *c);//impide que el jugador juegue teniendo dinero negativo(0 no tiene dinero suficiente, 1 tiene dinero), y transforma el dinero negativo en deuda
 
-
+void compararDatosConfig(Cliente *c);//compara los datos de la configuracion con los datos de los clientes, si no coinciden, se cambian los datos de los clientes
 
 #endif // PERSONAS_H_ //
