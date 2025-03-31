@@ -119,7 +119,7 @@ int main(int argc, char const *argv[]){
                             TragaPerras(&c);
                             break;
                         case '2'://este es la carrera de caballos
-                            carrera(c, listaCarreras);
+                            carrera(&c, listaCarreras);
                             break;
                         case '3'://este es el blackjack
                             

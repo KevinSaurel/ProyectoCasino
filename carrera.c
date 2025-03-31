@@ -10,7 +10,7 @@
 
 //#define MAX_DISTANCE 50  // Distancia de la carrera
 //#define MAX_CABALLOS 5 //numero de caballos en la carrera, modificar esto para que se pueda elegir la cantidad de caballos
-void carrera(Cliente c, ListaCarreras lc) {
+void carrera(Cliente *c, ListaCarreras lc) {
     int flag = 0;
 
     system("cls");
@@ -22,7 +22,7 @@ void carrera(Cliente c, ListaCarreras lc) {
 
     printf("                     Compitiendo en %c                                          \n",lc.aCarreras[posicion].nombre);
     printf("                         - %d corredores        -Distancia de la carrera %d             \n",lc.aCarreras[posicion].numCaballos,lc.aCarreras[posicion].distancia);//podemos poner distintos tipos de apuestas, solo preguntamelo si lo quieres
-    printf("                         -Saldo:%.2f            -Recompensa: %d                         \n", c.dinero,lc.aCarreras[posicion].premio);
+    printf("                         -Saldo:%.2f            -Recompensa: %d                         \n", c->dinero,lc.aCarreras[posicion].premio);
     printf("====================================================================================\n\n");
 
     printf("                                 [1] Apostar 20 euros a un caballo                                           \n");
@@ -32,14 +32,14 @@ void carrera(Cliente c, ListaCarreras lc) {
     scanf("%d", &opcion);
     switch (opcion) {
         case 1:
-        if (c.dinero < 20) {
+        if (c->dinero < 20) {
             printf("\nSaldo insuficiente para apostar.\n");
             break;
         }
-        c.dinero -= 20;
+        c->dinero -= 20;
             printf("\n                             EMPEZANDO JUEGO                            \n");
             printf("====================================================================================\n");
-            startCarrera(&c, lc.aCarreras[posicion]);
+            startCarrera(c, lc.aCarreras[posicion]);
             break;
         case 0:
             flag = 1;
