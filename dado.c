@@ -22,6 +22,8 @@ void menuDados(Cliente *c) {
     scanf("%d", &opcion);
     switch (opcion) {
         case 1:
+        system("cls");
+            printf("====================================================================================\n");
             printf("\n                             EMPEZANDO JUEGO                            \n");
             printf("====================================================================================\n");
             //otro menu donde te pide la cantidad de vasos con los que jugar y cual elijes
@@ -30,10 +32,14 @@ void menuDados(Cliente *c) {
             break;
         case 0:
             flag = 1;
+            system("cls");
+            printf("====================================================================================\n");
             printf("\n                              HASTA LUEGO                                  \n");
             printf("====================================================================================\n");
             break;
         default:
+        system("cls");
+            printf("====================================================================================\n");
             printf("\n                            OPCION NO VALIDA                                 \n");
             printf("====================================================================================\n");
             break;
@@ -150,11 +156,19 @@ void inicializar_dado(int recipientesCantidad, int selecionado){//devuelve 1 si 
 void ganar(int victoria,int cantidadRecipiente){
     if (victoria==1)
     {
-        printf("Has ganado\n");
+        Sleep(2);
+        system("cls");
+        printf("====================================================================================\n");
+        printf("                              HAS GANADO                                     \n");
+        printf("====================================================================================\n");
         //aumentar el dinero en funcion a la cantidad de recipientes
         //apuesta*cantidadRecipiente
     }else{
-        printf("Has perdido\n");
+        Sleep(2);
+        system("cls");
+        printf("====================================================================================\n");
+        printf("                              HAS PERDIDO                                     \n");
+        printf("====================================================================================\n");
 
     }
 }
@@ -165,23 +179,32 @@ void seleccion(){
     printf("                              BIENVENIDO A LA MESA                                 \n");
     printf("====================================================================================\n");
     printf("\n");
-
+    system("cls");
     printf("====================================================================================\n");
     printf("                              CON CUANTOS DADOS DESEAS JUGAR                        \n");
     printf("====================================================================================\n");
     printf("                              Seleccione cantidad de dados: ");
     scanf("%d", &recipientesCantidad);
+    system("cls");
     printf("====================================================================================\n");
     printf("                              POR QUE DADO APUESTAS                                 \n");
     printf("====================================================================================\n");
     printf("                              Seleccione el dado: ");
     scanf("%d", &selecionado);
     if(recipientesCantidad>9){
-        printf("Tantos dados no estan permitidos, pon los datos bien");
+        system("cls");
+        printf("====================================================================================\n");
+        printf("                NUMERO MAXIMO DE DADOS ALCANZADO(9)                \n");
+        printf("                                  INTENTELO DE NUEVO                \n");
+        printf("====================================================================================\n");
         seleccion();
     }else if (selecionado>recipientesCantidad||selecionado<0)
     {
-        printf("No puedes escojer ese dado");
+        system("cls");
+        printf("====================================================================================\n");
+        printf("                EL DADO SELECCIONADO NO EXISTE                    \n");
+        printf("                                  INTENTELO DE NUEVO                \n");
+        printf("====================================================================================\n");
         seleccion();
     }
      inicializar_dado(recipientesCantidad,selecionado);
