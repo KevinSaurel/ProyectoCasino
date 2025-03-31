@@ -59,10 +59,6 @@ void StartTragaPerras(Cliente *c) {
         InicializarPosiciones(&p, cantidadDeFrutas);
         system("cls");
 
-        // Debug print to check the values of p
-        for (int i = 0; i < p.numeroDePosiciones; i++) {
-            printf("Posicion %d: %d\n", p.p[i].posicion, p.p[i].random);
-        }
 
         ImprimirTragaPerras(p);
 
