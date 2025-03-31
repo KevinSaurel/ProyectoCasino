@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <time.h> //Obtener la fecha/hora del sistema
-#define FICHERO_LOG "log.txt"
+#define FICHERO_LOG "ficheros/log.txt"
 
 //A�ade en el fichero log el mensaje recibido por par�metro
 void writeLog(char *mensaje);

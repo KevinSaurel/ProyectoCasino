@@ -101,7 +101,7 @@ void compararDatosConfig(Cliente *c) {
     Config config;
 	char user[TAM],con[TAM];
 
-	config = leerConfiguracion("configuracion.config");
+	config = leerConfiguracion("ficheros/configuracion.config");
 	writeLog("Configuración leída");
 
     pedirDatosCliente(c);

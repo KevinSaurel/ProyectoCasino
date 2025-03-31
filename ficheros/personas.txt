@@ -1,2 +1,3 @@
 kevin,saurel,22,700.000000,0.000000
 gorka,villalba,20,690.000000,0.000000
+mikel,oyarzabal,20,500.000000,0.000000
