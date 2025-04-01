@@ -27,8 +27,7 @@ void menuDados(Cliente *c) {
             printf("\n                             EMPEZANDO JUEGO                            \n");
             printf("====================================================================================\n");
             //otro menu donde te pide la cantidad de vasos con los que jugar y cual elijes
-            seleccion();
-            //incializar
+            seleccion(c);            //incializar
             break;
         case 0:
             flag = 1;
@@ -136,8 +135,10 @@ void lanzar_dado(int recipientesCantidad,int ganador){//tambien necesito el nume
         Sleep(150);  // Ajustar velocidad 0.15 segundos
         frame++;
     }
+    free(vertical_offsets);
+    free(vertical_direcciones);
 }
-void inicializar_dado(int recipientesCantidad, int selecionado){//devuelve 1 si gana y 0 si pierde
+int inicializar_dado(int recipientesCantidad, int selecionado){//devuelve 1 si gana y 0 si pierde
     int ganador = rand() % recipientesCantidad;
     int victoria=0;
 
@@ -149,11 +150,12 @@ void inicializar_dado(int recipientesCantidad, int selecionado){//devuelve 1 si 
     }else{
         victoria=0;
     }
-    ganar(victoria,recipientesCantidad);
+    int result=ganar(victoria,recipientesCantidad);
+    return result;
 }
 
 
-void ganar(int victoria,int cantidadRecipiente){
+int ganar(int victoria,int cantidadRecipiente){
     if (victoria==1)
     {
         Sleep(2);
@@ -161,6 +163,7 @@ void ganar(int victoria,int cantidadRecipiente){
         printf("====================================================================================\n");
         printf("                              HAS GANADO                                     \n");
         printf("====================================================================================\n");
+        return 1;//devuelve 1 si has ganado 0 si pierdes
         //aumentar el dinero en funcion a la cantidad de recipientes
         //apuesta*cantidadRecipiente
     }else{
@@ -169,10 +172,10 @@ void ganar(int victoria,int cantidadRecipiente){
         printf("====================================================================================\n");
         printf("                              HAS PERDIDO                                     \n");
         printf("====================================================================================\n");
-
+        return 0;//0 si pierdes
     }
 }
-void seleccion(){
+void seleccion(Cliente *c){
     int recipientesCantidad;
      int selecionado;
  printf("\n====================================================================================\n");
@@ -191,22 +194,23 @@ void seleccion(){
     printf("====================================================================================\n");
     printf("                              Seleccione el dado: ");
     scanf("%d", &selecionado);
-    if(recipientesCantidad>9){
+    if (recipientesCantidad < 1 || recipientesCantidad > 9) {
         system("cls");
         printf("====================================================================================\n");
         printf("                NUMERO MAXIMO DE DADOS ALCANZADO(9)                \n");
         printf("                                  INTENTELO DE NUEVO                \n");
         printf("====================================================================================\n");
-        seleccion();
-    }else if (selecionado>recipientesCantidad||selecionado<0)
-    {
+        seleccion(c);
+        }else if (selecionado < 0 || selecionado >= recipientesCantidad) {
         system("cls");
         printf("====================================================================================\n");
         printf("                EL DADO SELECCIONADO NO EXISTE                    \n");
         printf("                                  INTENTELO DE NUEVO                \n");
         printf("====================================================================================\n");
-        seleccion();
-    }
-     inicializar_dado(recipientesCantidad,selecionado);
+        seleccion(c);
+        }
+     int result=inicializar_dado(recipientesCantidad,selecionado);//1 si ha ganado, 0 si ha perdido
+     //aqui se pone el cambio de dinero, por ahora alguien ha subido codigo que ha roto el proyecto, con lo que no puedo probarlo
+     
 }
 

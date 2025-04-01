@@ -5,7 +5,7 @@ void inicializar_dado(int recipientesCantidad, int selecionado);
 void lanzar_dado(int recipientesCantidad,int ganador);
 void ganar(int victoria,int cantidadRecipiente);
 void menuDados(Cliente *c);
-void seleccion();
+void seleccion(Cliente *c);
 
 
 
