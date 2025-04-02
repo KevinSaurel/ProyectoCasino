@@ -5,13 +5,14 @@
 #include <stdlib.h> // For rand() and srand()
 #include <time.h> // For time()
 #include <string.h> 
+#include <process.h>
 #include "music.h"
 
 
 #pragma comment(lib, "winmm.lib") // Enlaza la biblioteca multimedia de Windows
 
 void music() {
-    const char *songs[] = {"canciones/fifthOfBethoven.wav", "canciones/cantina.wav","canciones/Chic.wav"};
+    const char *songs[] = {"canciones/fifthOfBethoven.wav", "canciones/Luigi.wav","canciones/Chic.wav"};
     int totalSongs = sizeof(songs) / sizeof(songs[0]);
     int currentSong;
 
@@ -42,21 +43,18 @@ void playSong(const char *song,int tiempo) {
     
 }
 }
-void playSongCarrera() {
-    PlaySound("canciones/dingding.wav", NULL, SND_FILENAME | SND_ASYNC);
-    int TT = 40;
-    int tiempo =10;
-    int i = 0;
-    while (i < TT) {
-        
-        Sleep(1000);
-        i++;
-        if(i==tiempo){
-            PlaySound("canciones/carrera.wav", NULL, SND_FILENAME | SND_ASYNC);
+void playRaceSounds(void *arg) {
+    // Play the "dingding.wav" sound asynchronously
+    PlaySound("canciones/dingding.wav", NULL, SND_FILENAME | SND_SYNC);
 
-        break;
-    }
-    
-    
+    // Play the "carrera.wav" sound asynchronously
+    PlaySound("canciones/carrera.wav", NULL, SND_FILENAME | SND_SYNC);
+
+    // Start background music after the race sounds
+    music();
 }
+
+void playSongCarrera() {
+    // Start a new thread to play the race sounds
+    _beginthread(playRaceSounds, 0, NULL);
 }

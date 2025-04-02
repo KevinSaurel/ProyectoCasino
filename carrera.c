@@ -53,6 +53,7 @@ void carrera(Cliente *c, ListaCarreras lc) {
     }
 }
 void startCarrera(Cliente *cliente, Carrera ca){
+    playSongCarrera();
     int maxDistance = ca.distancia;
     int maxCaballos = ca.numCaballos;
     printf("\nSeleccione el número del caballo (1-%d): ", maxCaballos);
@@ -142,7 +143,7 @@ void startCarrera(Cliente *cliente, Carrera ca){
 }
 
 void imprimirPistaCarrera(Caballo caballo, Carrera c) {
-    playSongCarrera();
+    
     printf("Caballo %2d: |", caballo.numero);
     for (int i = 0; i <= c.distancia; i++) {
         if (i == caballo.posicion) {
@@ -169,6 +170,7 @@ void imprimirPistaCarrera(Caballo caballo, Carrera c) {
     }
 }*/
 int carreraEnCurso(Caballo listaCaballos[], Carrera c) {//esta es la unica solucion que he encontrado al problema del while
+    
     for (int i = 0; i < c.numCaballos; i++) {
         if (listaCaballos[i].posicion >= c.distancia) {
             return 0;
