@@ -42,3 +42,21 @@ void playSong(const char *song,int tiempo) {
     
 }
 }
+void playSongCarrera() {
+    PlaySound("canciones/dingding.wav", NULL, SND_FILENAME | SND_ASYNC);
+    int TT = 40;
+    int tiempo =10;
+    int i = 0;
+    while (i < TT) {
+        
+        Sleep(1000);
+        i++;
+        if(i==tiempo){
+            PlaySound("canciones/carrera.wav", NULL, SND_FILENAME | SND_ASYNC);
+
+        break;
+    }
+    
+    
+}
+}

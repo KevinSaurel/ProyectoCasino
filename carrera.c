@@ -6,7 +6,7 @@
 #include <time.h> // para el time
 #include <conio.h>   // For kbhit() //waits for a key to be pressed
 #include <windows.h> // For Sleep() //sleep
-
+#include "music.h"
 
 //#define MAX_DISTANCE 50  // Distancia de la carrera
 //#define MAX_CABALLOS 5 //numero de caballos en la carrera, modificar esto para que se pueda elegir la cantidad de caballos
@@ -142,6 +142,7 @@ void startCarrera(Cliente *cliente, Carrera ca){
 }
 
 void imprimirPistaCarrera(Caballo caballo, Carrera c) {
+    playSongCarrera();
     printf("Caballo %2d: |", caballo.numero);
     for (int i = 0; i <= c.distancia; i++) {
         if (i == caballo.posicion) {
