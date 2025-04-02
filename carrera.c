@@ -145,12 +145,12 @@ void imprimirPistaCarrera(Caballo caballo, Carrera c) {
     printf("Caballo %2d: |", caballo.numero);
     for (int i = 0; i <= c.distancia; i++) {
         if (i == caballo.posicion) {
-            printf("🐎");
+            printf("♞");
         } else {
             printf(" ");
         }
     }
-    printf("| 🏁\n​"); // Meta al final
+    printf("| ¶\n​"); // Meta al final
 }
 /*void caballoGanador(Caballo caballo,Carrera c, Cliente cliente){
     if (caballo.posicion >= c.distancia){

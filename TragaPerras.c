@@ -136,7 +136,8 @@ void InicializarPosiciones(ListaPosiciones *lp, int cantidadDeFrutas) {
 }
 
 void ImprimirTragaPerras(ListaPosiciones lp) {
-    const char *fruits[] = {"🍒", "🍋", "🍊", "🍉", "🍇", "🍓"};
+    const char *fruits[] = {"®", "µ", "¥", "Ω", "§", "¶"};
+
 
     int idx = 0;
     printf("                           ..:------:..            \n");
