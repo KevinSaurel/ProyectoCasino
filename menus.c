@@ -45,7 +45,7 @@ char menuPrincipal() {
 
 char menuSesion() {
     char opcion;
-    system("cls");
+    //system("cls");//Solo descomentarlo cuando toque entregarlo, no se cargan los errores si no
     printf("====================================================================================\n");
     printf("                           MENU DE SESION                                          \n");
     printf("====================================================================================\n");
