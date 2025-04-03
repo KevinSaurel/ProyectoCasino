@@ -54,7 +54,7 @@ void carrera(Cliente *c, ListaCarreras lc) {
     }
 }
 void startCarrera(Cliente *cliente, Carrera ca){
-    void playSongCarrera() ;
+    playSongCarrera() ;
 
     int maxDistance = ca.distancia;
     int maxCaballos = ca.numCaballos;
