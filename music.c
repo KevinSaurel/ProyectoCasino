@@ -20,7 +20,7 @@ void music() {
     srand(time(NULL));
 
     // Pick a random song to start with
-    currentSong = rand() % totalSongs;
+    currentSong = 1;
 
     // Reproducir el archivo .wav en segundo plano
     PlaySound(songs[currentSong], NULL, SND_FILENAME | SND_ASYNC);
@@ -48,8 +48,8 @@ void playRaceSounds(void *arg) {
     PlaySound("canciones/dingding.wav", NULL, SND_FILENAME | SND_SYNC);
 
     // Play the "carrera.wav" sound asynchronously
-    PlaySound("canciones/carrera.wav", NULL, SND_FILENAME | SND_SYNC);
-
+    PlaySound("canciones/carerra.wav", NULL, SND_FILENAME | SND_SYNC);
+    
     // Start background music after the race sounds
     music();
 }
