@@ -6,6 +6,7 @@
 #include <time.h> // para el time
 #include <conio.h>   // For kbhit() //waits for a key to be pressed
 #include <windows.h> // For Sleep() //sleep
+#include "music.h"
 
 
 //#define MAX_DISTANCE 50  // Distancia de la carrera
@@ -53,6 +54,8 @@ void carrera(Cliente *c, ListaCarreras lc) {
     }
 }
 void startCarrera(Cliente *cliente, Carrera ca){
+    void playSongCarrera() ;
+
     int maxDistance = ca.distancia;
     int maxCaballos = ca.numCaballos;
     printf("\nSeleccione el número del caballo (1-%d): ", maxCaballos);
