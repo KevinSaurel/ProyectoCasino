@@ -96,11 +96,17 @@ void startCarrera(Cliente *cliente, Carrera ca){
 
         // Imprimir la pista de la carrera
 
+        printf(" ");
         for (int i = 0; i < maxCaballos; i++)
         {
             imprimirPistaCarrera(listaCaballos[i], ca);
         }
-        printf("---------------------------------------------------------------------\n---------------------------------------------------------------------\n");
+        for (int i = 0; i < ca.distancia; i++)
+        {
+            printf("-");
+        }
+        printf("--------------------");
+        printf("\n");
         fflush(stdout);
 
         // Esperar medio segundo (500 ms) en Windows
@@ -133,6 +139,7 @@ void startCarrera(Cliente *cliente, Carrera ca){
             printf("¡Ganaste %.2f euros! Saldo actual: %.2f\n", ca.premio, cliente->dinero);
         } else {
             printf("Perdiste la apuesta.\n");
+
         }
     } else {
         printf("No hubo ganador. Se devuelven 20 euros.\n");
