@@ -11,7 +11,7 @@
 #include "logger.h"
 #include "config.h"
 #include "blackjack.h"
-
+#include "bd.h"
 
 int main(int argc, char const *argv[]){
     //inicializamos el cliente
@@ -47,7 +47,10 @@ int main(int argc, char const *argv[]){
 
 
 
-
+    //inicializamos la base de datos
+    sqlite3 *db;
+    inicializarBBDD(&db);
+    crearTablas(db);
 
 
     music();
