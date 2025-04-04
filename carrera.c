@@ -6,6 +6,7 @@
 #include <time.h> // para el time
 #include <conio.h>   // For kbhit() //waits for a key to be pressed
 #include <windows.h> // For Sleep() //sleep
+#include "music.h"
 
 
 //#define MAX_DISTANCE 50  // Distancia de la carrera
@@ -53,6 +54,8 @@ void carrera(Cliente *c, ListaCarreras lc) {
     }
 }
 void startCarrera(Cliente *cliente, Carrera ca){
+    playSongCarrera() ;
+
     int maxDistance = ca.distancia;
     int maxCaballos = ca.numCaballos;
     printf("\nSeleccione el número del caballo (1-%d): ", maxCaballos);
@@ -96,11 +99,17 @@ void startCarrera(Cliente *cliente, Carrera ca){
 
         // Imprimir la pista de la carrera
 
+        printf(" ");
         for (int i = 0; i < maxCaballos; i++)
         {
             imprimirPistaCarrera(listaCaballos[i], ca);
         }
-        printf("---------------------------------------------------------------------\n---------------------------------------------------------------------\n");
+        for (int i = 0; i < ca.distancia; i++)
+        {
+            printf("-");
+        }
+        printf("--------------------");
+        printf("\n");
         fflush(stdout);
 
         // Esperar medio segundo (500 ms) en Windows
@@ -133,6 +142,7 @@ void startCarrera(Cliente *cliente, Carrera ca){
             printf("¡Ganaste %.2f euros! Saldo actual: %.2f\n", ca.premio, cliente->dinero);
         } else {
             printf("Perdiste la apuesta.\n");
+
         }
     } else {
         printf("No hubo ganador. Se devuelven 20 euros.\n");

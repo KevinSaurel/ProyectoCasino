@@ -75,7 +75,7 @@ void StartTragaPerras(Cliente *c) {
             getch(); // wait for key press
 
             printf("\n\n                          JUEGO DETENIDO!      \n");
-            if (p.p[3].random == p.p[4].random && p.p[4].random == p.p[5].random) { // big win
+            if (p.p[3].random == p.p[4].random && p.p[4].random == p.p[5].random || p.p[1].random == p.p[5].random&&p.p[5].random == p.p[9].random || p.p[3].random == p.p[5].random&&p.p[5].random == p.p[7].random) { // big win
                 c->dinero += apuesta * 10;
                 printf("\n====================================================================================\n");
                 printf("                          GANASTE EL PREMIO GRANDE !!!                          \n");
