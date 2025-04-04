@@ -124,7 +124,7 @@ int main(int argc, char const *argv[]){
                             carrera(&c, listaCarreras);
                             break;
                         case '3'://este es el blackjack
-                            jugar_blackjack();
+                            jugar_blackjack(&c);
                             break;
                         case '4'://este es el dado
                             menuDados(&c);//pondre un menu para que escojas los valores que aparecen aqui

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "personas.h"
 
 #define MAX_CARTAS 52
 #define APUESTA_INICIAL 100
@@ -20,7 +21,7 @@ Carta obtener_carta() {
 }
 
 // Función para jugar una ronda de Blackjack
-void jugar_blackjack() {
+void jugar_blackjack(Cliente *c) {
     srand(time(NULL)); // Inicializar semilla aleatoria
     int total_jugador = 0, total_banca = 0;
     char opcion;
@@ -31,8 +32,10 @@ void jugar_blackjack() {
 
     printf("Ingresa tu apuesta: ");
     scanf("%d", &apuesta);
+    c->dinero=c->dinero-apuesta;
     if (apuesta > saldo || apuesta <= 0) {
         printf("Apuesta inválida.\n");
+       
         return;
     }
 
@@ -66,6 +69,7 @@ void jugar_blackjack() {
         printf("Te has pasado de 21. ¡Pierdes!\n");
         saldo -= apuesta;
         printf("Saldo actual: %d\n", saldo);
+        
         return;
     }
     
@@ -81,8 +85,11 @@ void jugar_blackjack() {
     if (total_banca > 21 || total_jugador > total_banca) {
         printf("¡Ganaste!\n");
         saldo += apuesta;
+        c->dinero=c->dinero+(apuesta*2);
+
     } else if (total_jugador == total_banca) {
         printf("Empate.\n");
+        c->dinero=c->dinero+apuesta;//recuperas apuesta empate 
     } else {
         printf("La banca gana.\n");
         saldo -= apuesta;
