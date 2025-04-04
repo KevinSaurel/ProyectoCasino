@@ -83,9 +83,11 @@ void jugar_blackjack(Cliente *c) {
     
     // Determinar ganador
     if (total_banca > 21 || total_jugador > total_banca) {
-        printf("¡Ganaste!\n");
+        
         saldo += apuesta;
-        c->dinero=c->dinero+(apuesta*2);
+        float wn=(apuesta*2);
+        c->dinero = c->dinero+wn;
+        printf("¡Ganaste %f $$$!\n",wn);
 
     } else if (total_jugador == total_banca) {
         printf("Empate.\n");
