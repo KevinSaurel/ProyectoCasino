@@ -10,7 +10,6 @@
 #include "fichero.h"
 #include "logger.h"
 #include "config.h"
-#include "blackjack.h"
 
 int main(int argc, char const *argv[]){
     //inicializamos el cliente
@@ -123,8 +122,7 @@ int main(int argc, char const *argv[]){
                             carrera(&c, listaCarreras);
                             break;
                         case '3'://este es el blackjack
-                            jugar_blackjack(&c);
-                            break;
+                            
                             break;
                         case '4'://este es el dado
                             menuDados(&c);//pondre un menu para que escojas los valores que aparecen aqui
