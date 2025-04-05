@@ -7,7 +7,9 @@
 #define NOMBRE_BBDD "bd/bd.db"
 
 int inicializarBBDD(sqlite3 **db);
-void crearTablas(sqlite3 *db);
-void volcarFicheroV2ALaBBDD(char *nomfich, sqlite3 *db);
+void crearTablaPersonas(sqlite3 *db);
+void volcarFicheroPersonasALaBBDD(char *nomfich, sqlite3 *db);
 void actualizarPersonaBD(char *nomfich, sqlite3 *db);
+void crearTablaCarreras(sqlite3 *db);
+void volcarFicheroCarrerasALaBBDD(char *nomfich, sqlite3 *db);
 #endif /* BBDD_H_ */

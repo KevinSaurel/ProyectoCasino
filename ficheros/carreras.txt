@@ -1,0 +1,4 @@
+8,60,Gran Premio Basauri,50
+10,70,Clásico Euskadi,50
+5,80,Clasica de Deusto,60
+4,90,Gran Premio Bilbao,40

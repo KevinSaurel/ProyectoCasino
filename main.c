@@ -50,8 +50,10 @@ int main(int argc, char const *argv[]){
     //inicializamos la base de datos
     sqlite3 *db;
     inicializarBBDD(&db);
-    crearTablas(db);
-    //volcarFicheroV2ALaBBDD("ficheros/personas.txt", db);
+    crearTablaPersonas(db);
+    crearTablaCarreras(db);
+    //volcarFicheroPersonasALaBBDD("ficheros/personas.txt", db);
+    //volcarFicheroCarrerasALaBBDD("ficheros/carreras.txt", db);
 
     music();
 

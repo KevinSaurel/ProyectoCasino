@@ -14,7 +14,7 @@ int inicializarBBDD(sqlite3 **db) {
 }
 
 
-void crearTablas(sqlite3 *db) {
+void crearTablaPersonas(sqlite3 *db) {
     sqlite3_stmt *stmt;
     char sql[200];
     sprintf(sql,
@@ -24,7 +24,7 @@ void crearTablas(sqlite3 *db) {
     sqlite3_finalize(stmt); //Cerrar la sentencia
 }
 
-void volcarFicheroV2ALaBBDD(char *nomfich, sqlite3 *db) {
+void volcarFicheroPersonasALaBBDD(char *nomfich, sqlite3 *db) {
     FILE *fichero = fopen(nomfich, "r");
     if (fichero == NULL) {
         printf("Error al abrir el fichero\n");
@@ -85,4 +85,37 @@ void actualizarPersonaBD(char *nomfich, sqlite3 *db) {
     // Cerrar el fichero
     fclose(fichero);
 
+}
+
+
+void crearTablaCarreras(sqlite3 *db) {
+    sqlite3_stmt *stmt;
+    char sql[200];
+    sprintf(sql,
+        "CREATE TABLE IF NOT EXISTS Carrera(nombre varchar(50), distancia int, premio int, numCaballos int)");
+    sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
+    sqlite3_step(stmt); //Ejecutar la sentencia
+    sqlite3_finalize(stmt); //Cerrar la sentencia
+}
+void volcarFicheroCarrerasALaBBDD(char *nomfich, sqlite3 *db) {
+    FILE *fichero = fopen(nomfich, "r");
+    if (fichero == NULL) {
+        printf("Error al abrir el fichero\n");
+        fflush(stdout);
+        return;
+    }
+
+    char sql[200];
+    sqlite3_stmt *stmt;
+    char nombre[50];
+    int distancia, premio, numCaballos;
+
+    while (fscanf(fichero, "%d,%d,%[^,],%d\n", &numCaballos, &distancia, nombre, &premio) == 4) {
+        sprintf(sql, "INSERT INTO Carrera(numCaballos, distancia, nombre, premio) VALUES (%d, %d, '%s', %d)", numCaballos, distancia, nombre, premio);
+        sqlite3_prepare_v2(db, sql, -1, &stmt, NULL); //Preparar la sentencia
+        sqlite3_step(stmt); //Ejecutar la sentencia
+        sqlite3_finalize(stmt); //Cerrar la sentencia
+    }
+
+    fclose(fichero);
 }
