@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 int inicializarBBDD(sqlite3 **db) {
     int result = sqlite3_open("bd/bd.db", db);
 	if (result != SQLITE_OK) {
@@ -45,4 +46,43 @@ void volcarFicheroV2ALaBBDD(char *nomfich, sqlite3 *db) {
     }
 
     fclose(fichero); 
+}
+
+void actualizarPersonaBD(char *nomfich, sqlite3 *db) {
+    FILE *fichero = fopen(nomfich, "r");
+    if (fichero == NULL) {
+        printf("Error al abrir el fichero: %s\n", nomfich);
+        fflush(stdout);
+        return;
+    }
+
+    char sql[200];
+    sqlite3_stmt *stmt;
+    char nombre[50], apellido[50];
+    int edad;
+    float dinero, deuda;
+
+    // Leer cada línea del fichero y actualizar la base de datos
+    while (fscanf(fichero, "%[^,],%[^,],%d,%f,%f\n", nombre, apellido, &edad, &dinero, &deuda) == 5) {
+        // Crear la consulta SQL para actualizar la tabla Persona
+        sprintf(sql, "UPDATE Persona SET dinero = %f, deuda = %f WHERE nombre = '%s' AND apellido = '%s'", dinero, deuda, nombre, apellido);
+
+        // Preparar la consulta
+        if (sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) != SQLITE_OK) {
+            printf("Error al preparar la consulta: %s\n", sqlite3_errmsg(db));
+            continue; // Pasar al siguiente registro en caso de error
+        }
+
+        // Ejecutar la consulta
+        if (sqlite3_step(stmt) != SQLITE_DONE) {
+            printf("Error al ejecutar la consulta: %s\n", sqlite3_errmsg(db));
+        }
+
+        // Finalizar la consulta
+        sqlite3_finalize(stmt);
+    }
+
+    // Cerrar el fichero
+    fclose(fichero);
+
 }

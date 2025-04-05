@@ -52,7 +52,6 @@ int main(int argc, char const *argv[]){
     inicializarBBDD(&db);
     crearTablas(db);
     //volcarFicheroV2ALaBBDD("ficheros/personas.txt", db);
-    sqlite3_close(db);
 
     music();
 
@@ -161,6 +160,7 @@ int main(int argc, char const *argv[]){
             case '0':
                 printf("Hasta la proxima\n");
                 actualizarPersona(c,"ficheros/personas.txt");
+                actualizarPersonaBD("ficheros/personas.txt", db);
 
                 fflush(stdout);
                 //guardar los cambios en el fichero
@@ -168,6 +168,7 @@ int main(int argc, char const *argv[]){
                 borrarDatosCliente(&c);//borramos los datos del cliente que sale
                 break;
             default:
+                sqlite3_close(db);
                 printf("Opcion no valida\n");
                 fflush(stdout);
                 
