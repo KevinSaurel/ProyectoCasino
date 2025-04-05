@@ -51,7 +51,8 @@ int main(int argc, char const *argv[]){
     sqlite3 *db;
     inicializarBBDD(&db);
     crearTablas(db);
-
+    //volcarFicheroV2ALaBBDD("ficheros/personas.txt", db);
+    sqlite3_close(db);
 
     music();
 
