@@ -2,7 +2,7 @@
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <time.h> 
-#include "personas.h"  
+#include "Model/personas.h"  
 
 #define MAX_CARTAS 52 
 #define APUESTA_INICIAL 500

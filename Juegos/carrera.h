@@ -1,7 +1,7 @@
 #ifndef CARERRA_H_
 #define CARERRA_H_
 #include <stdio.h>
-#include "personas.h"
+#include "Model/personas.h"
 
 
 typedef struct {

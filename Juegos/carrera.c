@@ -1,12 +1,12 @@
 #include <stdio.h>
-#include "menus.h"
-#include "personas.h"
+#include "Menus/menus.h"
+#include "Model/personas.h"
 #include "carrera.h"
 #include <stdlib.h>// para el rands
 #include <time.h> // para el time
 #include <conio.h>   // For kbhit() //waits for a key to be pressed
 #include <windows.h> // For Sleep() //sleep
-#include "music.h"
+#include "Music/music.h"
 
 
 //#define MAX_DISTANCE 50  // Distancia de la carrera

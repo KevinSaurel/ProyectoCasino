@@ -1,6 +1,6 @@
 #define MAX_CARTAS 52
 #define APUESTA_INICIAL 100
-#include "personas.h"
+#include "Model/personas.h"
 
 // Estructura para representar una carta
 typedef struct {

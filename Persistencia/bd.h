@@ -3,7 +3,7 @@
 #include "sqlite3.h"
 #include <stdio.h>
 #include <stdlib.h> 
-#include "personas.h"
+#include "Model/personas.h"
 #define NOMBRE_BBDD "bd/bd.db"
 
 int inicializarBBDD(sqlite3 **db);

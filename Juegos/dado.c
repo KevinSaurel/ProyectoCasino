@@ -1,5 +1,5 @@
 #include "dado.h"
-#include "personas.h"
+#include "Model/personas.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <Windows.h> // Para sleep
