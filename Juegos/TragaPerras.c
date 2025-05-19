@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include "Menus/menus.h"
-#include "Music/music.h"
-#include "Model/personas.h"
+#include "../Menus/menus.h"
+#include "../Music/music.h"
+#include "../Model/personas.h"
 #include "tragaperras.h"
 #include <stdlib.h> // for rand and system
 #include <time.h> // for time

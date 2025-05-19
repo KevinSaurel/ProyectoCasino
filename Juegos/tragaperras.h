@@ -1,6 +1,6 @@
 #ifndef TRAGAPERRAS_H_
 #define TRAGAPERRAS_H_
-#include "Model/personas.h"
+#include "../Model/personas.h"
 typedef struct{
     int random;
     int posicion;

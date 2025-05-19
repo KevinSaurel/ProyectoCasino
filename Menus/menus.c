@@ -1,5 +1,5 @@
 #include "menus.h"
-#include "Model/personas.h"
+#include "../Model/personas.h"
 #include <stdio.h>
 #include <stdlib.h> 
 

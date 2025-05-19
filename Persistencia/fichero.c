@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Model/personas.h"
+#include "../Model/personas.h"
 
 void guardarNuevaPersona(Cliente cliente, char*fichero ){
     FILE *file;

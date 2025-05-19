@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <Windows.h>
-#include "Persistencia/fichero.h"
-#include "Persistencia/config.h"
-#include "Logger/logger.h"
+#include "../Persistencia/fichero.h"
+#include "../Persistencia/config.h"
+#include "../Logger/logger.h"
 
 void pedirPrestamo(Cliente *c){
     float prestamo;

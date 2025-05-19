@@ -1,17 +1,17 @@
 #include <stdio.h>
-#include "Juegos/tragaperras.h"
-#include "Model/personas.h"
+#include "../Juegos/tragaperras.h"
+#include "../Model/personas.h"
 #include "menus.h"
-#include "Music/music.h"
+#include "../Music/music.h"
 #include <windows.h>
-#include "Juegos/carrera.h"
+#include "../Juegos/carrera.h"
 #include <stdlib.h> // for rand and system
-#include "Juegos/dado.h"
-#include "Persistencia/fichero.h"
-#include "Logger/logger.h"
-#include "Persistencia/config.h"
-#include "Juegos/blackjack.h"
-#include "Persistencia/bd.h"
+#include "../Juegos/dado.h"
+#include "../Persistencia/fichero.h"
+#include "../Logger/logger.h"
+#include "../Persistencia/config.h"
+#include "../Juegos/blackjack.h"
+#include "../Persistencia/bd.h"
 
 int main(int argc, char const *argv[]){
     //inicializamos el cliente
