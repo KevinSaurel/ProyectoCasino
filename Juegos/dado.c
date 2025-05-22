@@ -144,7 +144,7 @@ int inicializar_dado(int recipientesCantidad, int selecionado){//devuelve 1 si g
 
     
     lanzar_dado(recipientesCantidad,ganador);
-    if (ganador == selecionado)
+    if (ganador == selecionado+1)
     {
         victoria=1;
     }else{
