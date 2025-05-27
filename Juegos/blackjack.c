@@ -4,11 +4,10 @@
 #include <time.h> 
 #include "../Model/personas.h"  
 
-#define MAX_CARTAS 52 
-#define APUESTA_INICIAL 500
+
 
 // Baraja de cartas estándar 
-Carta baraja[MAX_CARTAS] = {     
+Carta baraja[52] = {     
     {"As", 11}, {"Dos", 2}, {"Tres", 3}, {"Cuatro", 4}, {"Cinco", 5},     
     {"Seis", 6}, {"Siete", 7}, {"Ocho", 8}, {"Nueve", 9}, {"Diez", 10},     
     {"Jota", 10}, {"Reina", 10}, {"Rey", 10} 
@@ -25,7 +24,7 @@ void jugar_blackjack(Cliente *c) {
     srand(time(NULL)); // Inicializar semilla aleatoria     
     int total_jugador = 0, total_banca = 0;     
     char opcion;     
-    int saldo = APUESTA_INICIAL, apuesta;      
+    int saldo = c->dinero, apuesta;      
     
     printf("\n\033[1;33m╔════════════════════════════════════╗\033[0m\n");
     printf("\033[1;33m║      BIENVENIDO AL BLACKJACK        ║\033[0m\n");
