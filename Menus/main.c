@@ -23,6 +23,7 @@ int main(int argc, char const *argv[])
     char buffer[MAX_BUFFER] = {0};
 
    #ifdef _WIN32
+
     WSADATA wsaData;
     if (WSAStartup(MAKEWORD(2,2), &wsaData) != 0) {
         printf("WSAStartup failed.\n");
