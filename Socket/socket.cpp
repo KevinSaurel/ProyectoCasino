@@ -39,17 +39,7 @@ SOCKET Socket::getSocket() const {
 }
 // Implementación de funciones C
 extern "C" {
-    int enviarDatos(SocketHandle socket, const char* mensaje) {
-        SOCKET s = static_cast<SOCKET>(socket);
-        int len = static_cast<int>(strlen(mensaje));
-        int bytes_enviados = send(s, mensaje, len, 0);
-        if (bytes_enviados == SOCKET_ERROR) {
-            return -1;
-        }
-        return bytes_enviados;
-    }
-
-    int recibirDatos(SocketHandle socket, char* buffer, int buffer_length) {
+    /*int recibirDatos(SocketHandle socket, char* buffer, int buffer_length) {
         SOCKET s = static_cast<SOCKET>(socket);
         int bytes_recibidos = recv(s, buffer, buffer_length - 1, 0);
         if (bytes_recibidos == SOCKET_ERROR) {
@@ -59,7 +49,7 @@ extern "C" {
             buffer[bytes_recibidos] = '\0';
         }
         return bytes_recibidos;
-    }
+    }*/
 
     void cerrarSocket(SocketHandle socket) {
         SOCKET s = static_cast<SOCKET>(socket);

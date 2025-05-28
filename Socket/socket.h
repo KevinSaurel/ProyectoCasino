@@ -5,7 +5,12 @@
 // Solo incluye headers de C++ si se compila como C++
 #include <winsock2.h>
 #include <ws2tcpip.h>
+#include <windows.h>
 #include <stdexcept>
+#include <stdint.h> 
+#include <cstring>     // Para `strlen()`
+
+
 
 class Socket {
 protected:
@@ -20,12 +25,13 @@ public:
 // Interfaz mínima para compatibilidad con C
 extern "C" {
     #endif
+    typedef intptr_t SocketHandle;
+
     
     // Tipo opaco para representar sockets (compatible con C)
-    typedef intptr_t SocketHandle;
+    typedef SOCKET SocketHandle;
     
     // Nuevas funciones de operación básica
-    int enviarDatos(SocketHandle socket, const char* mensaje);
     int recibirDatos(SocketHandle socket, char* buffer, int buffer_length);
     void cerrarSocket(SocketHandle socket);
     #ifdef __cplusplus

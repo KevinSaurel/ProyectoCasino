@@ -23,6 +23,8 @@ typedef void* ClienteHandle;
 ClienteHandle crearCliente(const char* serverIp, int port);
 void destruirCliente(ClienteHandle handle);
 SocketHandle obtenerSocketCliente(ClienteHandle handle);
+void enviarDatos(ClienteHandle handle, const char* message);  // Nombre actualizado
+
 #ifdef __cplusplus
 }
 #endif

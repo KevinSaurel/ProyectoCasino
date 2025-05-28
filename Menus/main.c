@@ -19,40 +19,44 @@
 
 int main(int argc, char const *argv[])
 {
-    // Crear servidor
-    ServerHandle servidor = crearServidor(8080);
-    if (!servidor)
-    {
-        fprintf(stderr, "Error creando servidor\n");
-        return 1;
-    }
-
-    printf("Servidor iniciado. Esperando conexiones...\n");
-
-    // Aceptar conexión
-    SocketHandle cliente_socket = aceptarConexion(servidor);
-    if (cliente_socket == (SocketHandle)INVALID_SOCKET)
-    {
-        fprintf(stderr, "Error aceptando conexión\n");
+        // 1. Crear servidor
+        ServerHandle servidor = crearServidor(8080);
+        if (!servidor) {
+            printf("Error al crear servidor\n");
+            return 1;
+        }
+    
+        // 2. Aceptar conexión
+        SocketHandle clienteSocket = aceptarConexion(servidor);
+        if (clienteSocket == (SocketHandle)INVALID_SOCKET) {
+            printf("Error al aceptar conexión\n");
+            destruirServidor(servidor);
+            return 1;
+        }
+    
+        // 3. Crear cliente
+        ClienteHandle cliente = crearCliente("127.0.0.1", 8080);
+        if (!cliente) {
+            printf("Error al crear cliente\n");
+            cerrarSocket(clienteSocket);
+            destruirServidor(servidor);
+            return 1;
+        }
+    
+        // 4. Enviar mensaje (usando nueva función)
+        enviarDatos(cliente, "Hola desde C!");
+    
+        // 5. Recibir respuesta
+        char buffer[1024];
+        int recibidos = recibirDatos(clienteSocket, buffer, sizeof(buffer));
+        if (recibidos > 0) {
+            printf("Recibido: %s\n", buffer);
+        }
+    
+        // 6. Limpieza
+        destruirCliente(cliente);
+        cerrarSocket(clienteSocket);
         destruirServidor(servidor);
-        return 1;
-    }
-
-    printf("Cliente conectado. Socket: %lld\n", (long long)cliente_socket);
-    // Crear cliente
-    ClienteHandle clienteSocket = crearCliente("127.0.0.1", 8080);
-    if (!clienteSocket)
-    {
-        fprintf(stderr, "Error creando cliente\n");
-        return 1;
-    }
-
-    printf("clienteSocket creado\n");
-    // Aquí iría la lógica para recibir/enviar datos...
-
-    // Enviar mensaje
-    enviarMensaje(clienteSocket, "Hola desde C!");
-    printf("Mensaje enviado\n");
 
     // inicializamos el cliente
     Cliente c; // inicializamos el cliente
@@ -220,13 +224,7 @@ int main(int argc, char const *argv[])
             Sleep(3000);
         } while (opcion2 != '0' && bancaRota(&c) == 1);
     }
-    // Liberar recursos
-    destruirCliente(clienteSocket);
-    // Cerrar socket del cliente
-    closesocket((SOCKET)cliente_socket);
 
-    // Destruir servidor
-    destruirServidor(servidor);
 
     return 0;
 }

@@ -18,9 +18,9 @@ Cliente::Cliente(std::string serverIp, int port)
 
     
     // Convierte la dirección IP a formato binario pero nose por que da error
-    if (address.sin_addr.s_addr == INADDR_NONE) {
-        throw std::runtime_error("Dirección IP inválida");
-    }
+    /*if (address.sin_addr.s_addr == INADDR_NONE) {
+        std::runtime_error("Dirección IP inválida");
+    }*/
 
     // Intenta conectar al servidor
     if (connect(getSocket(),(sockaddr*)&address,sizeof(address)) == SOCKET_ERROR) {
@@ -47,7 +47,7 @@ void destruirCliente(ClienteHandle handle) {
     delete static_cast<Cliente*>(handle);
 }
 
-void enviarMensaje(ClienteHandle handle, const char* message) {
+void enviarDatos(ClienteHandle handle, const char* message) {
     try {
         Cliente* cliente = static_cast<Cliente*>(handle);
         cliente->sendMessage(message);
