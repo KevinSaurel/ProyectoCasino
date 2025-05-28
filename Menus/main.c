@@ -1,7 +1,4 @@
 #include <stdio.h>
-#include "../Socket/socket.h"
-#include "../Socket/server.h"
-#include "../Socket/cliente.h"
 #include "../Juegos/tragaperras.h"
 #include "../Model/personas.h"
 #include "menus.h"
@@ -19,44 +16,6 @@
 
 int main(int argc, char const *argv[])
 {
-        // 1. Crear servidor
-        ServerHandle servidor = crearServidor(8080);
-        if (!servidor) {
-            printf("Error al crear servidor\n");
-            return 1;
-        }
-    
-        // 2. Aceptar conexión
-        SocketHandle clienteSocket = aceptarConexion(servidor);
-        if (clienteSocket == (SocketHandle)INVALID_SOCKET) {
-            printf("Error al aceptar conexión\n");
-            destruirServidor(servidor);
-            return 1;
-        }
-    
-        // 3. Crear cliente
-        ClienteHandle cliente = crearCliente("127.0.0.1", 8080);
-        if (!cliente) {
-            printf("Error al crear cliente\n");
-            cerrarSocket(clienteSocket);
-            destruirServidor(servidor);
-            return 1;
-        }
-    
-        // 4. Enviar mensaje (usando nueva función)
-        enviarDatos(cliente, "Hola desde C!");
-    
-        // 5. Recibir respuesta
-        char buffer[1024];
-        int recibidos = recibirDatos(clienteSocket, buffer, sizeof(buffer));
-        if (recibidos > 0) {
-            printf("Recibido: %s\n", buffer);
-        }
-    
-        // 6. Limpieza
-        destruirCliente(cliente);
-        cerrarSocket(clienteSocket);
-        destruirServidor(servidor);
 
     // inicializamos el cliente
     Cliente c; // inicializamos el cliente
