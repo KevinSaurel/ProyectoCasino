@@ -25,6 +25,31 @@ SOCKET Server::acceptConnection() {
     SOCKET clientSocket = accept(getSocket(), nullptr, nullptr);
     if (clientSocket == INVALID_SOCKET) {
         throw std::runtime_error("Error en accept()");
+    } else {
+        std::cout << "Cliente conectado con éxito!" << std::endl;
     }
     return clientSocket;
+}
+// Implementación de la interfaz C
+ServerHandle crearServidor(int port) {
+    try {
+        return new Server(port);
+    } catch (const std::exception& e) {
+        std::cerr << "Error creando servidor: " << e.what() << std::endl;
+        return nullptr;
+    }
+}
+
+void destruirServidor(ServerHandle handle) {
+    delete static_cast<Server*>(handle);
+}
+
+SocketHandle aceptarConexion(ServerHandle handle) {
+    try {
+        Server* servidor = static_cast<Server*>(handle);
+        return static_cast<SocketHandle>(servidor->acceptConnection());
+    } catch (const std::exception& e) {
+        std::cerr << "Error aceptando conexión: " << e.what() << std::endl;
+        return static_cast<SocketHandle>(INVALID_SOCKET);
+    }
 }

@@ -1,7 +1,8 @@
 #ifndef SERVER_H
 #define SERVER_H
 
-#include "socket.h" 
+#ifdef __cplusplus
+#include "socket.h"
 #include <stdexcept>
 #include <string>
 
@@ -10,5 +11,22 @@ public:
     Server(int port);
     SOCKET acceptConnection();
 };
+#endif // __cplusplus
+
+// Interfaz C compatible
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+typedef void* ServerHandle;
+typedef intptr_t SocketHandle;  // Tipo compatible para sockets
+
+ServerHandle crearServidor(int port);
+void destruirServidor(ServerHandle handle);
+SocketHandle aceptarConexion(ServerHandle handle);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // SERVER_H

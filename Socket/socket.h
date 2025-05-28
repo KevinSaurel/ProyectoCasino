@@ -17,6 +17,19 @@ public:
     virtual ~Socket();
     SOCKET getSocket() const;
 };
-
-#endif // __cplusplus
-#endif // SOCKET_H
+// Interfaz mínima para compatibilidad con C
+extern "C" {
+    #endif
+    
+    // Tipo opaco para representar sockets (compatible con C)
+    typedef intptr_t SocketHandle;
+    
+    // Nuevas funciones de operación básica
+    int enviarDatos(SocketHandle socket, const char* mensaje);
+    int recibirDatos(SocketHandle socket, char* buffer, int buffer_length);
+    void cerrarSocket(SocketHandle socket);
+    #ifdef __cplusplus
+    }
+    #endif
+    
+    #endif // SOCKET_H
