@@ -13,9 +13,52 @@
 #include "../Persistencia/config.h"
 #include "../Juegos/blackjack.h"
 #include "../Persistencia/bd.h"
+#define MAX_BUFFER 1024
+#define PORT 5000
 
 int main(int argc, char const *argv[])
 {
+    int sock = 0;
+    struct sockaddr_in serv_addr;
+    char buffer[MAX_BUFFER] = {0};
+
+   #ifdef _WIN32
+    WSADATA wsaData;
+    if (WSAStartup(MAKEWORD(2,2), &wsaData) != 0) {
+        printf("WSAStartup failed.\n");
+        return -1;
+    }
+#endif
+
+sock = socket(AF_INET, SOCK_STREAM, 0);
+if (sock < 0) {
+    printf("Error creando el socket\n");
+    return -1;
+}
+
+serv_addr.sin_family = AF_INET;
+serv_addr.sin_port = htons(PORT);
+#ifdef _WIN32
+    serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+#else
+    if (inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr) <= 0) {
+        printf("Dirección inválida\n");
+        return -1;
+    }
+#endif
+
+if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
+    printf("\nFalló la conexión\n");
+    #ifdef _WIN32
+    closesocket(sock);
+    WSACleanup();
+    #else
+    close(sock);
+    #endif
+    return -1;
+}
+
+
 
     // inicializamos el cliente
     Cliente c; // inicializamos el cliente
@@ -93,6 +136,10 @@ int main(int argc, char const *argv[])
         break;
     case '2':
         cargarDatosCliente(&c);
+        // Enviamos un mensaje al servidor
+        send(sock, c.nombre, strlen(c.nombre), 0);
+        printf("Mensaje enviado: %s\n", &c.nombre);
+
 
         break;
 
@@ -130,7 +177,7 @@ int main(int argc, char const *argv[])
                             // aqui se pone el menu de tragaperras
 
                             TragaPerras(&c);
-                            
+
                             break;
                         case '2': // este es la carrera de caballos
                             carrera(&c, listaCarreras);

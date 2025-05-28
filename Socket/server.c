@@ -5,7 +5,7 @@
 #include <ws2tcpip.h>
 #pragma comment(lib, "ws2_32.lib")
 
-#define PORT 8080
+#define PORT 5000
 #define MAX_BUFFER 1024
 int main() {
     WSADATA wsaData;
