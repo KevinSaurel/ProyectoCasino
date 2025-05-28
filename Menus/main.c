@@ -16,6 +16,46 @@
 
 int main(int argc, char const *argv[])
 {
+    #ifdef _WIN32
+    WSADATA wsaData;
+    if (WSAStartup(MAKEWORD(2,2), &wsaData) != 0) {
+        printf("WSAStartup failed.\n");
+        return -1;
+    }
+    #endif
+    int sock = 0;
+    struct sockaddr_in serv_addr;
+    char buffer[1024] = {0};
+        if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+        printf("\nFallo en la creación del socket\n");
+        #ifdef _WIN32
+        WSACleanup();
+        #endif
+        return -1;
+    }
+    serv_addr.sin_family = AF_INET;
+    serv_addr.sin_port = htons(8080);
+    if (inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr) <= 0) {
+        printf("\nDirección inválida/ No soportada\n");
+        #ifdef _WIN32
+        closesocket(sock);
+        WSACleanup();
+        #else
+        close(sock);
+        #endif
+        return -1;
+    }
+        // Nos conectamos al servidor
+    if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
+        printf("\nFalló la conexión\n");
+        #ifdef _WIN32
+        closesocket(sock);
+        WSACleanup();
+        #else
+        close(sock);
+        #endif
+        return -1;
+    }
 
     // inicializamos el cliente
     Cliente c; // inicializamos el cliente
