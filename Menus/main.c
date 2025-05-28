@@ -28,15 +28,6 @@ int main(int argc, char const *argv[])
     }
 
     printf("Servidor iniciado. Esperando conexiones...\n");
-    // Crear cliente
-    ClienteHandle clienteSocket = crearCliente("127.0.0.1", 8080);
-    if (!clienteSocket)
-    {
-        fprintf(stderr, "Error creando cliente\n");
-        return 1;
-    }
-
-    printf("clienteSocket creado\n");
 
     // Aceptar conexión
     SocketHandle cliente_socket = aceptarConexion(servidor);

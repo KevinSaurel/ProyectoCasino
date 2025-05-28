@@ -14,9 +14,11 @@ Cliente::Cliente(std::string serverIp, int port)
 
     address.sin_family = AF_INET;
     address.sin_port = htons(port);
+    address.sin_addr.s_addr = inet_addr(serverIp.c_str());
+
     
     // Convierte la dirección IP a formato binario pero nose por que da error
-    if (InetPtonA(AF_INET, serverIp.c_str(), &address.sin_addr) <= 0) {
+    if (address.sin_addr.s_addr == INADDR_NONE) {
         throw std::runtime_error("Dirección IP inválida");
     }
 
