@@ -7,6 +7,7 @@
 
 #define PORT 5000
 #define MAX_BUFFER 1024
+
 int main() {
     WSADATA wsaData;
     int server_fd, new_socket;
@@ -53,23 +54,34 @@ int main() {
         return -1;
     }
 
-    // Leemos el mensaje del socket
-    int bytesRead = recv(new_socket, buffer, MAX_BUFFER - 1, 0);
-    if (bytesRead > 0) {
-        buffer[bytesRead] = '\0';
-        printf("Mensaje del cliente: %s\n", buffer);
+    printf("Cliente conectado. Esperando mensajes...\n");
 
-        // Enviamos respuesta al cliente
-        send(new_socket, response, strlen(response), 0);
-        printf("Mensaje enviado al cliente\n");
-    } else {
-        printf("No se recibió mensaje del cliente o error en recv.\n");
+    // Loop to receive multiple messages
+    while (1) {
+        int bytesRead = recv(new_socket, buffer, MAX_BUFFER - 1, 0);
+        if (bytesRead > 0) {
+            buffer[bytesRead] = '\0';
+            printf("Mensaje del cliente: %s\n", buffer);
+
+            // Optionally, check for an exit command
+            if (strcmp(buffer, "exit") == 0) {
+                printf("Cliente solicitó terminar la conexión.\n");
+                break;
+            }
+
+            // Send response
+            send(new_socket, response, strlen(response), 0);
+            printf("Mensaje enviado al cliente\n");
+        } else if (bytesRead == 0) {
+            printf("El cliente cerró la conexión.\n");
+            break;
+        } else {
+            printf("Error en recv.\n");
+            break;
+        }
+        memset(buffer, 0, MAX_BUFFER);
     }
 
-    // Limpiamos el buffer
-    memset(buffer, 0, MAX_BUFFER);
-
-    // Cerramos la conexión
     closesocket(new_socket);
     closesocket(server_fd);
     WSACleanup();

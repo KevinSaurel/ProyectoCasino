@@ -140,6 +140,10 @@ if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
         // Enviamos un mensaje al servidor
         send(sock, c.nombre, strlen(c.nombre), 0);
         printf("Mensaje enviado: %s\n", &c.nombre);
+       char dinero_str[32];
+        sprintf(dinero_str, "%.2f", c.dinero);
+        send(sock, dinero_str, strlen(dinero_str), 0);
+
 
 
         break;
@@ -218,6 +222,8 @@ if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
                 printf("Hasta la proxima\n");
                 actualizarPersona(c, "ficheros/personas.txt");
                 actualizarPersonaBD("ficheros/personas.txt", db);
+                send(sock, "exit", strlen("exit"), 0);
+
 
                 fflush(stdout);
                 // guardar los cambios en el fichero
