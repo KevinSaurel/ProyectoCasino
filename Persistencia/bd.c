@@ -119,3 +119,49 @@ void volcarFicheroCarrerasALaBBDD(char *nomfich, sqlite3 *db) {
 
     fclose(fichero);
 }
+
+char* conseguirNombrePersona(sqlite3 *db, char *nombre, char *apellido) {
+    sqlite3_stmt *stmt;
+    char sql[200];
+    sprintf(sql, "SELECT nombre FROM Persona WHERE nombre = '%s' AND apellido = '%s'", nombre, apellido);
+    
+    if (sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) != SQLITE_OK) {
+        printf("Error al preparar la consulta: %s\n", sqlite3_errmsg(db));
+        return NULL;
+    }
+
+    if (sqlite3_step(stmt) == SQLITE_ROW) {
+        const char *nombrePersona = (const char *)sqlite3_column_text(stmt, 0);
+        sqlite3_finalize(stmt);
+        return strdup(nombrePersona); // Devolver una copia del nombre
+    } else {
+        sqlite3_finalize(stmt);
+        return NULL; // No se encontró el nombre
+    }
+}
+
+float conseguirDineroPersona(sqlite3 *db, float *dinero) {
+    sqlite3_stmt *stmt;
+    char sql[200];
+    sprintf(sql, "SELECT dinero FROM Persona WHERE dinero = %f", *dinero);
+    
+    if (sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) != SQLITE_OK) {
+        printf("Error al preparar la consulta: %s\n", sqlite3_errmsg(db));
+        return -1; // Error
+    }
+
+    if (sqlite3_step(stmt) == SQLITE_ROW) {
+        float dineroPersona = (float)sqlite3_column_double(stmt, 0);
+        sqlite3_finalize(stmt);
+        return dineroPersona; // Devolver el dinero encontrado
+    } else {
+        sqlite3_finalize(stmt);
+        return -1; // No se encontró el dinero
+    }
+}
+
+void cerrarBBDD(sqlite3 *db) {
+    if (db != NULL) {
+        sqlite3_close(db);
+    }
+}
