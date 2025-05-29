@@ -22,44 +22,46 @@ int main(int argc, char const *argv[])
     struct sockaddr_in serv_addr;
     char buffer[MAX_BUFFER] = {0};
 
-   #ifdef _WIN32
+#ifdef _WIN32
 
     WSADATA wsaData;
-    if (WSAStartup(MAKEWORD(2,2), &wsaData) != 0) {
+    if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0)
+    {
         printf("WSAStartup failed.\n");
         return -1;
     }
 #endif
 
-sock = socket(AF_INET, SOCK_STREAM, 0);
-if (sock < 0) {
-    printf("Error creando el socket\n");
-    return -1;
-}
+    sock = socket(AF_INET, SOCK_STREAM, 0);
+    if (sock < 0)
+    {
+        printf("Error creando el socket\n");
+        return -1;
+    }
 
-serv_addr.sin_family = AF_INET;
-serv_addr.sin_port = htons(PORT);
+    serv_addr.sin_family = AF_INET;
+    serv_addr.sin_port = htons(PORT);
 #ifdef _WIN32
     serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 #else
-    if (inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr) <= 0) {
+    if (inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr) <= 0)
+    {
         printf("Dirección inválida\n");
         return -1;
     }
 #endif
 
-if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
-    printf("\nFalló la conexión\n");
-    #ifdef _WIN32
-    closesocket(sock);
-    WSACleanup();
-    #else
-    close(sock);
-    #endif
-    return -1;
-}
-
-
+    if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
+    {
+        printf("\nFalló la conexión\n");
+#ifdef _WIN32
+        closesocket(sock);
+        WSACleanup();
+#else
+        close(sock);
+#endif
+        return -1;
+    }
 
     // inicializamos el cliente
     Cliente c; // inicializamos el cliente
@@ -140,11 +142,9 @@ if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
         // Enviamos un mensaje al servidor
         send(sock, c.nombre, strlen(c.nombre), 0);
         printf("Mensaje enviado: %s\n", &c.nombre);
-       char dinero_str[32];
+        char dinero_str[32];
         sprintf(dinero_str, "%.2f", c.dinero);
         send(sock, dinero_str, strlen(dinero_str), 0);
-
-
 
         break;
 
@@ -178,21 +178,63 @@ if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
                     { // condicion que comprueba que el jugador tiene dinero
                         switch (opcion3)
                         {
-                        case '1': // este es el tragaperras
+                        case '1': 
+                        {// este es el tragaperras
                             // aqui se pone el menu de tragaperras
-
+                            float aux = c.dinero;
+                            char temp[50];
                             TragaPerras(&c);
-
+                            // Enviamos un mensaje al servidor
+                            char dineroStr[32];
+                            snprintf(dineroStr, sizeof(dineroStr), "%.2f", aux);
+                            // envialos sin concatenar cada vez luego en el otro lado tenga un if que compruebe cada uno
+                            sprintf(temp, "%s;%s;%s", c.nombre, c.apellido, dineroStr); // primero se envia el nombre, luego apellido luego el dinero
+                            send(sock, temp, strlen(temp), 0);
+                            printf("Mensaje enviado: %s\n", dineroStr);
                             break;
-                        case '2': // este es la carrera de caballos
+                        }
+                        case '2':
+                        { // este es la carrera de caballos
+                            float aux = c.dinero;
+                            char temp[50];
                             carrera(&c, listaCarreras);
+                            // Enviamos un mensaje al servidor
+                            char dineroStr[32];
+                            snprintf(dineroStr, sizeof(dineroStr), "%.2f", aux);
+                            // envialos sin concatenar cada vez luego en el otro lado tenga un if que compruebe cada uno
+                            sprintf(temp, "%s;%s;%s", c.nombre, c.apellido, dineroStr); // primero se envia el nombre, luego apellido luego el dinero
+                            send(sock, temp, strlen(temp), 0);
+                            printf("Mensaje enviado: %s\n", dineroStr);
                             break;
-                        case '3': // este es el blackjack
+                        }
+                        case '3': 
+                        {// este es el blackjack
+                            float aux = c.dinero;
+                            char temp[50];
                             jugar_blackjack(&c);
+                            // Enviamos un mensaje al servidor
+                            char dineroStr[32];
+                            snprintf(dineroStr, sizeof(dineroStr), "%.2f", aux);
+                            // envialos sin concatenar cada vez luego en el otro lado tenga un if que compruebe cada uno
+                            sprintf(temp, "%s;%s;%s", c.nombre, c.apellido, dineroStr); // primero se envia el nombre, luego apellido luego el dinero
+                            send(sock, temp, strlen(temp), 0);
+                            printf("Mensaje enviado: %s\n", dineroStr);
                             break;
-                        case '4':          // este es el dado
+                        }
+                        case '4':
+                        { // este es el dado
+                            float aux = c.dinero;
+                            char temp[50];
                             menuDados(&c); // pondre un menu para que escojas los valores que aparecen aqui
+                            // Enviamos un mensaje al servidor
+                            char dineroStr[32];
+                            snprintf(dineroStr, sizeof(dineroStr), "%.2f", aux);
+                            // envialos sin concatenar cada vez luego en el otro lado tenga un if que compruebe cada uno
+                            sprintf(temp, "%s;%s;%s", c.nombre, c.apellido, dineroStr); // primero se envia el nombre, luego apellido luego el dinero
+                            send(sock, temp, strlen(temp), 0);
+                            printf("Mensaje enviado: %s\n", dineroStr);
                             break;
+                        }
                         case '0':
                             printf("Volver al menu principal\n");
                             fflush(stdout);
@@ -224,7 +266,6 @@ if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
                 actualizarPersonaBD("ficheros/personas.txt", db);
                 send(sock, "exit", strlen("exit"), 0);
 
-
                 fflush(stdout);
                 // guardar los cambios en el fichero
 
@@ -238,7 +279,6 @@ if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
             Sleep(3000);
         } while (opcion2 != '0' && bancaRota(&c) == 1);
     }
-
 
     return 0;
 }

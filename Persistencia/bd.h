@@ -13,6 +13,5 @@ void actualizarPersonaBD(char *nomfich, sqlite3 *db);
 void crearTablaCarreras(sqlite3 *db);
 void volcarFicheroCarrerasALaBBDD(char *nomfich, sqlite3 *db);
 void cerrarBBDD(sqlite3 *db);
-char* conseguirNombrePersona(sqlite3 *db, char *nombre, char *apellido);
-float conseguirDineroPersona(sqlite3 *db, float *dinero);
+float conseguirDineroPersona(sqlite3 *db, char *nombre, char *apellido);
 #endif /* BBDD_H_ */
