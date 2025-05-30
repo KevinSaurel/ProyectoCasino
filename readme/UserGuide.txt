@@ -1,0 +1,17 @@
+PROYECTO_CASINO:
+
+Guia de ejecucion: 
+
+1-Ejecutar el Casino.bat
+
+2-Iniciar sesion/reguistrarse
+
+3-Navegar el menu de utilidades utilizando (1-9) para seleccionar las opciones por terminal
+
+4-Seleccionar el juego deseado y jugar con moderacion
+
+5-Disfrutar de diversion gestionada pudiendo pagar la hipoteca
+
+6-No endeudarse
+
+7-Ganar dinero.
