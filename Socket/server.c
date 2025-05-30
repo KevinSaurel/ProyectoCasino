@@ -2,6 +2,9 @@
 #include <string.h>
 #include <unistd.h>
 #include "../Persistencia/bd.h"
+#include "../Persistencia/config.h"
+#include "../Persistencia/fichero.h"
+#include "../Persistencia/sqlite3.h"
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #pragma comment(lib, "ws2_32.lib")
@@ -82,24 +85,27 @@ int main()
                 printf("Cliente solicitó terminar la conexión.\n");
                 break;
             }
-            char *token = strtok(buffer, ";");//aqui separa cada parte
-            int cont=0;
+            char *token = strtok(buffer, ";"); // aqui separa cada parte
+            int cont = 0;
             char nom[25];
             char apellido[25];
             int dinero;
-            while (token != NULL)//recorre el buffer
+            while (token != NULL) // recorre el buffer
             {
-                cont= cont+1;
-                if (cont==1)strcpy(nom, token);
-                if (cont==2)strcpy(apellido, token);
-                if (cont==3)dinero = atof(token);
-                
-                //printf("%s\n", token);
+                cont = cont + 1;
+                if (cont == 1)
+                    strcpy(nom, token);
+                if (cont == 2)
+                    strcpy(apellido, token);
+                if (cont == 3)
+                    dinero = atof(token);
+
+                // printf("%s\n", token);
                 token = strtok(NULL, ";");
             }
-            //int dinero = atof(buffer);
-            float dineroBase=conseguirDineroPersona(db, nom,apellido);
-            float mensaje=dineroBase-dinero;
+            // int dinero = atof(buffer);
+            float dineroBase = conseguirDineroPersona(db, nom, apellido);
+            float mensaje = dineroBase - dinero;
             char mensajeStr[32];
             snprintf(mensajeStr, sizeof(mensajeStr), "%.2f", mensaje);
             // Send response
@@ -122,6 +128,7 @@ int main()
     closesocket(new_socket);
     closesocket(server_fd);
     WSACleanup();
+    sqlite3_close(db);
 
     return 0;
 }
