@@ -109,7 +109,7 @@ int main()
             char mensajeStr[32];
             snprintf(mensajeStr, sizeof(mensajeStr), "%.2f", mensaje);
             // Send response
-            send(new_socket, mensajeStr, strlen(mensajeStr), 0);
+            send(new_socket, mensajeStr, strlen(mensajeStr), 0);//la respuesta esta corrupta
             printf("Mensaje enviado al cliente\n");
         }
         else if (bytesRead == 0)

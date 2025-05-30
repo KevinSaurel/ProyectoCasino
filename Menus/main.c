@@ -178,8 +178,8 @@ int main(int argc, char const *argv[])
                     { // condicion que comprueba que el jugador tiene dinero
                         switch (opcion3)
                         {
-                        case '1': 
-                        {// este es el tragaperras
+                        case '1':
+                        { // este es el tragaperras
                             // aqui se pone el menu de tragaperras
                             float aux = c.dinero;
                             char temp[50];
@@ -191,6 +191,17 @@ int main(int argc, char const *argv[])
                             sprintf(temp, "%s;%s;%s", c.nombre, c.apellido, dineroStr); // primero se envia el nombre, luego apellido luego el dinero
                             send(sock, temp, strlen(temp), 0);
                             printf("Mensaje enviado: %s\n", dineroStr);
+                            // Leemos la respuesta del servidor
+                            int valread = recv(sock, buffer, MAX_BUFFER - 1, 0);
+                            if (valread > 0)
+                            {
+                                buffer[valread] = '\0';
+                                printf("Respuesta del servidor: %s\n", buffer);
+                            }
+                            else
+                            {
+                                printf("No se recibió respuesta del servidor.\n");
+                            }
                             break;
                         }
                         case '2':
@@ -205,10 +216,21 @@ int main(int argc, char const *argv[])
                             sprintf(temp, "%s;%s;%s", c.nombre, c.apellido, dineroStr); // primero se envia el nombre, luego apellido luego el dinero
                             send(sock, temp, strlen(temp), 0);
                             printf("Mensaje enviado: %s\n", dineroStr);
+                            // Leemos la respuesta del servidor
+                            int valread = recv(sock, buffer, MAX_BUFFER - 1, 0);
+                            if (valread > 0)
+                            {
+                                buffer[valread] = '\0';
+                                printf("Respuesta del servidor: %s\n", buffer);
+                            }
+                            else
+                            {
+                                printf("No se recibió respuesta del servidor.\n");
+                            }
                             break;
                         }
-                        case '3': 
-                        {// este es el blackjack
+                        case '3':
+                        { // este es el blackjack
                             float aux = c.dinero;
                             char temp[50];
                             jugar_blackjack(&c);
@@ -219,6 +241,17 @@ int main(int argc, char const *argv[])
                             sprintf(temp, "%s;%s;%s", c.nombre, c.apellido, dineroStr); // primero se envia el nombre, luego apellido luego el dinero
                             send(sock, temp, strlen(temp), 0);
                             printf("Mensaje enviado: %s\n", dineroStr);
+                            // Leemos la respuesta del servidor
+                            int valread = recv(sock, buffer, MAX_BUFFER - 1, 0);
+                            if (valread > 0)
+                            {
+                                buffer[valread] = '\0';
+                                printf("Respuesta del servidor: %s\n", buffer);
+                            }
+                            else
+                            {
+                                printf("No se recibió respuesta del servidor.\n");
+                            }
                             break;
                         }
                         case '4':
@@ -233,6 +266,17 @@ int main(int argc, char const *argv[])
                             sprintf(temp, "%s;%s;%s", c.nombre, c.apellido, dineroStr); // primero se envia el nombre, luego apellido luego el dinero
                             send(sock, temp, strlen(temp), 0);
                             printf("Mensaje enviado: %s\n", dineroStr);
+                            // Leemos la respuesta del servidor
+                            int valread = recv(sock, buffer, MAX_BUFFER - 1, 0);
+                            if (valread > 0)
+                            {
+                                buffer[valread] = '\0';
+                                printf("Respuesta del servidor: %s\n", buffer);
+                            }
+                            else
+                            {
+                                printf("No se recibió respuesta del servidor.\n");
+                            }
                             break;
                         }
                         case '0':
